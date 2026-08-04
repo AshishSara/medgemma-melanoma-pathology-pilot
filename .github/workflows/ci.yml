@@ -29,6 +29,14 @@ jobs:
       - name: Test
         run: uv run pytest
 
+      - name: Restore AI-audited formal evidence
+        run: |
+          (
+            cd results/bundles
+            sha256sum -c formal-results-32f1453e-reviewed.sha256
+          )
+          tar -xzf results/bundles/formal-results-32f1453e-reviewed.tgz
+
       - name: Regenerate and validate the synthetic corpus
         run: |
           uv run python scripts/generate_reports.py
