@@ -4,11 +4,13 @@ This repository is a deterministic technical gate for testing whether MedGemma
 can extract management-critical melanoma fields from heterogeneous synthetic
 pathology-report images without inventing unstated values.
 
-> Status: **held-out protocol frozen; formal inference not yet scored.** The
-> synthetic corpus, paired render conditions, JSON ground truth, inference
-> harness, metrics, and review ledger are reproducible. Gated model access and
-> a free Colab T4/BF16 runtime have been confirmed. Do not use the outreach
-> draft until all 56 formal outputs are present and manually reviewed.
+> Status: **formal inference complete; extraction-quality gate not passed;
+> human review pending.** All 56 pinned BF16 outputs are present with valid
+> provenance and parse as JSON, but none conforms to the frozen schema. Codex
+> reviewer agents completed an explicitly labeled AI-assisted visual and
+> provenance audit of every output. That audit is useful quality control but
+> does not satisfy the human manual-review gate. Individual outreach remains
+> on hold.
 
 ## Research question
 
@@ -43,10 +45,46 @@ evaluation dataset.
   Secondary metrics include strict JSON/Schema validity, complete-report
   accuracy, paired clean-to-degraded change, and results by template and
   condition.
-- Every formal output must be visually reviewed before outreach.
+- Every formal output must be visually reviewed by a human before outreach.
+  An AI-assisted audit may prepare the ledger but does not satisfy that gate.
 
 This is a manually prompt-optimized, no-example feasibility pilot—not an
 unqualified stock-prompt or fine-tuned evaluation.
+
+## Formal result
+
+| Model | Parse-valid | Schema-valid | Field exact | Non-null micro-F1 | Unsupported-field rate |
+|---|---:|---:|---:|---:|---:|
+| MedGemma 1.5 4B IT | 28/28 | 0/28 | 178/448 (39.7%) | 40.0% | 14/172 (8.1%) |
+| MedGemma 1 4B IT | 28/28 | 0/28 | 230/448 (51.3%) | 52.0% | 47/172 (27.3%) |
+
+Both models returned the correct document ID in 28/28 outputs and achieved
+0/28 complete-report accuracy. For MedGemma 1.5, mean field exact match
+decreased by 1.8 percentage points under bounded degradation; the comparator's
+mean exact-match change was 0.0 points. Codex reviewer agents visually audited
+all 28 unique source images and all 56 raw responses. Every output-level audit
+is bound to the raw-output SHA-256 in `results/manual_review.csv` and labeled
+`ai_audited`; human verification remains pending.
+
+Frequent schema failures included noncanonical categorical strings, `null`
+where the schema requires structured `margins` or `staging` objects, and
+string-valued numerics. The deliberately separated prior-report case also
+exposed unsupported historical-value carryover in the comparator. See
+[`docs/results.md`](docs/results.md) for the full interpretation and
+limitations.
+
+The compact AI-audited evidence archive is
+[`results/bundles/formal-results-32f1453e-reviewed.tgz`](results/bundles/formal-results-32f1453e-reviewed.tgz).
+Its adjacent `.sha256` file records the archive digest. The archive contains
+all raw responses, model-only continuations, parsed objects, run records,
+runtime metadata, aggregate metrics, and the hash-bound audit ledger.
+
+Verify the archive from the repository root with:
+
+```bash
+(cd results/bundles && \
+  shasum -a 256 -c formal-results-32f1453e-reviewed.sha256)
+```
 
 ## Frozen inference behavior
 
@@ -124,7 +162,8 @@ uv run python scripts/evaluate.py
 uv run python scripts/validate_artifacts.py
 ```
 
-Formal raw responses are under `results/raw/`, model-only continuations under
+In a full checkout or after unpacking the reviewed evidence archive, formal raw
+responses are under `results/raw/`, model-only continuations under
 `results/generated_continuations/`, parsed objects under `results/normalized/`,
 and provenance records under `results/run_records/`. Development runs are
 routed under `results/development/` and cannot enter the formal evaluator.
@@ -136,10 +175,12 @@ protocol.
 ## Gate status
 
 See [`docs/gate_status.md`](docs/gate_status.md). Publication is a
-reproducibility artifact, not evidence that model inference passed. The
-intended sequence is: complete and review the pilot, submit the HAI-DEF use
-case, use the developer forum or GitHub for technical questions, and only then
-consider individual research outreach.
+reproducibility artifact, not evidence that model inference passed. This pilot
+completed with a negative extraction-quality result. The intended sequence is:
+complete human manual verification, submit the measured use case through
+HAI-DEF, route a reproducible technical question through the developer forum
+or GitHub, and only then decide whether individual research outreach is
+warranted.
 
 ## Safety and scope
 

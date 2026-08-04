@@ -1,6 +1,6 @@
 ---
 title: MedGemma Melanoma Pathology Extraction Pilot
-status: active
+status: pilot-complete-human-review-pending-outreach-hold
 created: 2026-08-04
 tags:
   - medgemma
@@ -16,8 +16,11 @@ tags:
 
 The public corpus is canonical and the held-out `heldout-pilot-v2` protocol is
 frozen. `MEL-001` is development-only; formal scoring uses `MEL-002` through
-`MEL-008`. Outreach remains on hold until both pinned-model runs and all manual
-reviews are complete. A published harness is not a completed technical gate.
+`MEL-008`. The pinned 56-output run is complete. Codex reviewer agents
+completed a hash-bound AI-assisted audit of every output, but human manual
+verification remains pending. All outputs parse as JSON, but 0/56 conform to
+the frozen schema, so the extraction-quality gate did not pass. Individual
+outreach remains on hold.
 
 ## Working links
 
@@ -25,12 +28,15 @@ reviews are complete. A published harness is not a completed technical gate.
 - [[docs/gate_status|Technical gate]]
 - [[docs/schema|Extraction schema]]
 - [[docs/manual_review|Manual review]]
+- [[docs/results|Formal results]]
 - [[docs/sources|Evidence and overlap check]]
 - [[local-notes/Outreach Draft|Private outreach draft]]
 
 ## Next concrete action
 
-Publish the held-out protocol commit, pin Colab to that immutable commit, and
-run the 56-output BF16 matrix on the confirmed Tesla T4. Then evaluate and
-visually review every hash-bound output, update the pilot sentence, and submit
-the HAI-DEF feedback form before emailing an individual researcher.
+Publish the explicitly labeled AI-audited formal evidence in the draft GitHub
+pull request, then have a human verify all 56 hash-bound rows. After that,
+submit the measured negative result through the HAI-DEF feedback pathway and
+route a reproducible schema-compliance question through the developer forum or
+GitHub. Do not email an individual researcher until those steps are complete
+and the outreach decision is reconsidered in light of the result.
