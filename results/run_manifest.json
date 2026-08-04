@@ -26,7 +26,7 @@
   "formal_semantic_case_count": 7,
   "intended_output_count": 56,
   "invalid_provenance_output_count": 0,
-  "last_evaluated_utc": "2026-08-04T18:48:03.008502+00:00",
+  "last_evaluated_utc": "2026-08-04T18:57:52.808319+00:00",
   "max_new_tokens": 1200,
   "model_revisions": {
     "google/medgemma-1.5-4b-it": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
