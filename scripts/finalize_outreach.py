@@ -6,10 +6,18 @@ import csv
 import re
 from typing import Any, Dict
 
-from pilot_utils import ROOT, read_json
+from pilot_utils import (
+    FORMAL_DOCUMENT_CONDITION_COUNT,
+    FORMAL_OUTPUT_COUNT,
+    PROTOCOL_VERSION,
+    ROOT,
+    read_json,
+    sha256_file,
+    slugify_model_id,
+)
 
 PLACEHOLDER = re.compile(
-    r"\[PILOT RESULT SENTENCE - replace only after all 64 outputs are scored "
+    r"\[PILOT RESULT SENTENCE - replace only after all 56 outputs are scored "
     r"and manually verified\.\]"
 )
 
@@ -21,33 +29,68 @@ def model_metrics(metrics: Dict[str, Any], model_id: str) -> Dict[str, Any]:
     raise SystemExit(f"Metrics missing for {model_id}")
 
 
-def verified_review_count() -> tuple[int, int]:
+def verified_review_count() -> tuple[int, int, int]:
     path = ROOT / "results" / "manual_review.csv"
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    return sum(row["review_status"] == "verified" for row in rows), len(rows)
+    verified = 0
+    stale = 0
+    for row in rows:
+        if row["review_status"] != "verified":
+            continue
+        raw_path = (
+            ROOT
+            / "results"
+            / "raw"
+            / slugify_model_id(row["model_id"])
+            / row["condition"]
+            / f"{row['document_id']}.txt"
+        )
+        if raw_path.exists() and row.get("raw_output_sha256") == sha256_file(raw_path):
+            verified += 1
+        else:
+            stale += 1
+    return verified, len(rows), stale
 
 
 def finalize(repository_url: str) -> str:
     metrics = read_json(ROOT / "results" / "metrics.json")
-    if metrics.get("status") != "COMPLETE" or metrics.get("completed_output_count") != 64:
-        raise SystemExit("Cannot finalize outreach until all 64 outputs are complete.")
-    verified, total = verified_review_count()
-    if (verified, total) != (64, 64):
+    if (
+        metrics.get("protocol_version") != PROTOCOL_VERSION
+        or metrics.get("status") != "COMPLETE"
+        or metrics.get("completed_output_count") != FORMAL_OUTPUT_COUNT
+    ):
         raise SystemExit(
-            f"Cannot finalize outreach until manual review is 64/64; found {verified}/{total}."
+            f"Cannot finalize outreach until all {FORMAL_OUTPUT_COUNT} held-out outputs "
+            "are complete under the frozen protocol."
+        )
+    verified, total, stale = verified_review_count()
+    if (verified, total, stale) != (FORMAL_OUTPUT_COUNT, FORMAL_OUTPUT_COUNT, 0):
+        raise SystemExit(
+            f"Cannot finalize outreach until manual review is "
+            f"{FORMAL_OUTPUT_COUNT}/{FORMAL_OUTPUT_COUNT} with matching raw-output hashes; "
+            f"found {verified}/{total} verified and {stale} stale."
         )
 
     row = model_metrics(metrics, "google/medgemma-1.5-4b-it")
+    if row["intended_outputs"] != FORMAL_DOCUMENT_CONDITION_COUNT:
+        raise SystemExit("MedGemma 1.5 metrics have an unexpected denominator.")
     sentence = (
-        "In a frozen synthetic feasibility pilot of 16 base reports evaluated "
-        "as 32 paired clean/degraded document conditions, MedGemma 1.5 4B "
-        f"produced schema-valid JSON for {row['schema_valid_json_count']}/32 "
-        f"documents, achieved {row['field_exact_match'] * 100:.1f}% atomic-field "
-        "exact match, and had an unsupported-field rate of "
+        "In a held-out synthetic feasibility pilot (7 semantic cases; 14 "
+        "report-layout documents; 28 clean/degraded rendered inputs forming "
+        "14 matched pairs), MedGemma 1.5 4B IT, run with greedy BF16 decoding "
+        "using a MEL-001-development-selected no-example prompt and a one-character "
+        "JSON assistant prefix, produced strict parse-valid JSON in "
+        f"{row['raw_json_parse_count']}/{row['intended_outputs']} outputs and "
+        f"schema-valid JSON in {row['schema_valid_json_count']}/"
+        f"{row['intended_outputs']}; field exact match was "
+        f"{row['field_exact_correct']}/{row['field_exact_total']} "
+        f"({row['field_exact_match'] * 100:.1f}%), non-null micro-F1 was "
+        f"{row['micro_f1'] * 100:.1f}%, and unsupported non-null values occurred in "
+        f"{row['unsupported_count']}/{row['unsupported_opportunities']} "
+        "ground-truth-null opportunities ("
         f"{row['unsupported_field_rate'] * 100:.1f}% "
-        f"({row['unsupported_count']}/{row['unsupported_opportunities']} "
-        f"null-field opportunities); materials: {repository_url}"
+        f"unsupported-field rate); materials: {repository_url}"
     )
 
     draft_path = ROOT / "local-notes" / "Outreach Draft.md"
