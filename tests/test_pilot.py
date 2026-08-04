@@ -14,7 +14,10 @@ from output_parser import deterministic_unfence, parse_and_validate  # noqa: E40
 from pilot_utils import (  # noqa: E402
     FORMAL_DOCUMENT_CONDITION_COUNT,
     FORMAL_OUTPUT_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     PRIMARY_FIELD_PATHS,
+    REVIEW_STATUS_AI_AUDITED,
+    REVIEW_STATUS_HUMAN_VERIFIED,
     compare_prediction,
     ground_truth_from_case,
     load_cases,
@@ -116,6 +119,12 @@ def test_formal_matrix_excludes_entire_development_case() -> None:
     assert {row["semantic_case_id"] for row in development} == {"MEL-001"}
     assert len(development) == 4
     assert all(row["semantic_case_id"] != "MEL-001" for row in formal)
+
+
+def test_ai_audit_does_not_satisfy_human_review_gate() -> None:
+    assert REVIEW_STATUS_AI_AUDITED in HASH_BOUND_REVIEW_STATUSES
+    assert REVIEW_STATUS_HUMAN_VERIFIED in HASH_BOUND_REVIEW_STATUSES
+    assert REVIEW_STATUS_AI_AUDITED != REVIEW_STATUS_HUMAN_VERIFIED
 
 
 def test_development_outputs_are_routed_outside_formal_results() -> None:
