@@ -10,6 +10,7 @@ from pilot_utils import (
     FORMAL_DOCUMENT_CONDITION_COUNT,
     FORMAL_OUTPUT_COUNT,
     PROTOCOL_VERSION,
+    REVIEW_STATUS_HUMAN_VERIFIED,
     ROOT,
     read_json,
     sha256_file,
@@ -29,14 +30,14 @@ def model_metrics(metrics: Dict[str, Any], model_id: str) -> Dict[str, Any]:
     raise SystemExit(f"Metrics missing for {model_id}")
 
 
-def verified_review_count() -> tuple[int, int, int]:
+def human_review_count() -> tuple[int, int, int]:
     path = ROOT / "results" / "manual_review.csv"
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    verified = 0
+    human_verified = 0
     stale = 0
     for row in rows:
-        if row["review_status"] != "verified":
+        if row["review_status"] != REVIEW_STATUS_HUMAN_VERIFIED:
             continue
         raw_path = (
             ROOT
@@ -47,10 +48,10 @@ def verified_review_count() -> tuple[int, int, int]:
             / f"{row['document_id']}.txt"
         )
         if raw_path.exists() and row.get("raw_output_sha256") == sha256_file(raw_path):
-            verified += 1
+            human_verified += 1
         else:
             stale += 1
-    return verified, len(rows), stale
+    return human_verified, len(rows), stale
 
 
 def finalize(repository_url: str) -> str:
@@ -64,12 +65,16 @@ def finalize(repository_url: str) -> str:
             f"Cannot finalize outreach until all {FORMAL_OUTPUT_COUNT} held-out outputs "
             "are complete under the frozen protocol."
         )
-    verified, total, stale = verified_review_count()
-    if (verified, total, stale) != (FORMAL_OUTPUT_COUNT, FORMAL_OUTPUT_COUNT, 0):
+    human_verified, total, stale = human_review_count()
+    if (human_verified, total, stale) != (
+        FORMAL_OUTPUT_COUNT,
+        FORMAL_OUTPUT_COUNT,
+        0,
+    ):
         raise SystemExit(
-            f"Cannot finalize outreach until manual review is "
+            f"Cannot finalize outreach until human manual review is "
             f"{FORMAL_OUTPUT_COUNT}/{FORMAL_OUTPUT_COUNT} with matching raw-output hashes; "
-            f"found {verified}/{total} verified and {stale} stale."
+            f"found {human_verified}/{total} human-verified and {stale} stale."
         )
 
     row = model_metrics(metrics, "google/medgemma-1.5-4b-it")

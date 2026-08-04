@@ -15,11 +15,13 @@ from pilot_utils import (
     FORMAL_DOCUMENT_CONDITION_COUNT,
     FORMAL_OUTPUT_COUNT,
     FORMAL_SEMANTIC_CASE_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     MODEL_IDS,
     PRIMARY_FIELD_PATHS,
     PROTOCOL_VERSION,
     ROOT,
     TEMPLATE_IDS,
+    VALID_REVIEW_STATUSES,
     flatten_json,
     formal_manifest_rows,
     read_json,
@@ -217,7 +219,10 @@ def validate() -> Dict[str, Any]:
         (row["model_id"], row["document_id"], row["condition"]): row for row in review_rows
     }
     for key, row in review_by_key.items():
-        if row["review_status"] != "verified":
+        if row["review_status"] not in VALID_REVIEW_STATUSES:
+            errors.append(f"Unknown review status {row['review_status']!r}: {key}")
+            continue
+        if row["review_status"] not in HASH_BOUND_REVIEW_STATUSES:
             continue
         model_id, document_id_value, condition = key
         raw_path = (
@@ -229,9 +234,9 @@ def validate() -> Dict[str, Any]:
             / f"{document_id_value}.txt"
         )
         if not raw_path.exists():
-            errors.append(f"Verified review lacks raw output: {key}")
+            errors.append(f"Hash-bound review lacks raw output: {key}")
         elif row.get("raw_output_sha256") != sha256_file(raw_path):
-            errors.append(f"Verified review hash does not match raw output: {key}")
+            errors.append(f"Hash-bound review hash does not match raw output: {key}")
 
     summary = {
         "valid": not errors,

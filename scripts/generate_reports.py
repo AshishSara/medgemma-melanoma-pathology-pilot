@@ -23,10 +23,12 @@ from pilot_utils import (
     FORMAL_OUTPUT_COUNT,
     FORMAL_RESPONSE_MODE,
     FORMAL_SEMANTIC_CASE_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     JSON_ASSISTANT_PREFIX,
     MODEL_IDS,
     MODEL_REVISIONS,
     PROTOCOL_VERSION,
+    REVIEW_STATUS_PENDING,
     ROOT,
     TEMPLATE_IDS,
     document_id,
@@ -651,7 +653,7 @@ def initialize_result_ledgers(
             review_rows.append(
                 {
                     **base,
-                    "review_status": "pending",
+                    "review_status": REVIEW_STATUS_PENDING,
                     "raw_output_sha256": "",
                     "parse_valid": "",
                     "schema_valid": "",
@@ -671,17 +673,18 @@ def initialize_result_ledgers(
         run_manifest_path = ROOT / "results" / "run_manifest.json"
         current = read_json(run_manifest_path) if run_manifest_path.exists() else {}
         raw_files = list((ROOT / "results" / "raw").glob("**/*.txt"))
-        verified_reviews = False
+        hash_bound_reviews = False
         if review_path.exists():
             with review_path.open(newline="", encoding="utf-8") as handle:
-                verified_reviews = any(
-                    row.get("review_status") == "verified" for row in csv.DictReader(handle)
+                hash_bound_reviews = any(
+                    row.get("review_status") in HASH_BOUND_REVIEW_STATUSES
+                    for row in csv.DictReader(handle)
                 )
         if (
             current.get("status", "NOT_RUN") != "NOT_RUN"
             or current.get("completed_output_count", 0) != 0
             or raw_files
-            or verified_reviews
+            or hash_bound_reviews
         ):
             raise ValueError("Refusing to refresh non-empty result ledgers")
 
@@ -737,7 +740,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--refresh-empty-ledgers",
         action="store_true",
-        help="Rewrite ledgers only when no outputs or verified reviews exist.",
+        help="Rewrite ledgers only when no outputs or hash-bound reviews exist.",
     )
     return parser.parse_args()
 

@@ -18,11 +18,13 @@ from pilot_utils import (
     FORMAL_OUTPUT_COUNT,
     FORMAL_RESPONSE_MODE,
     FORMAL_SEMANTIC_CASE_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     JSON_ASSISTANT_PREFIX,
     MODEL_IDS,
     MODEL_REVISIONS,
     PRIMARY_FIELD_PATHS,
     PROTOCOL_VERSION,
+    REVIEW_STATUS_PENDING,
     ROOT,
     compare_prediction,
     flatten_json,
@@ -513,15 +515,15 @@ def update_manual_review(rows: Sequence[Mapping[str, Any]]) -> None:
                 "condition": row["condition"],
             }
         )
-        review.setdefault("review_status", "pending")
+        review.setdefault("review_status", REVIEW_STATUS_PENDING)
         current_raw_sha = row["raw_output_sha256"]
         if (
-            review.get("review_status") == "verified"
+            review.get("review_status") in HASH_BOUND_REVIEW_STATUSES
             and review.get("raw_output_sha256") != current_raw_sha
         ):
             review.update(
                 {
-                    "review_status": "pending",
+                    "review_status": REVIEW_STATUS_PENDING,
                     "source_ambiguity": "",
                     "adjudication": "",
                     "reviewer": "",
