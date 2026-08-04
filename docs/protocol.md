@@ -163,17 +163,20 @@ Unsupported-field rate must be shown beside non-null recall or micro-F1 so an
 all-null response cannot appear safe. Zero unsupported values must not be
 described as “hallucination-free.”
 
-## Manual review
+## Human manual review
 
-Every one of the 56 formal outputs must be inspected against the source image
-and deterministic ground truth. Reviewers record parse and schema validity,
-document-ID correctness, discrepancies, unsupported fields, source ambiguity,
-and adjudication. A verified review is bound to the raw-output SHA-256; changed
-bytes automatically invalidate that verification.
+Every one of the 56 formal outputs must be inspected by a human against the
+source image and deterministic ground truth before outreach. Reviewers record
+parse and schema validity, document-ID correctness, discrepancies, unsupported
+fields, source ambiguity, and adjudication. A `human_verified` review is bound
+to the raw-output SHA-256; changed bytes automatically invalidate that
+verification.
 
-Automated metrics do not replace visual review. A qualified
-dermatopathologist should approve the schema before expansion and review
-approximately 15 genuinely ambiguous cases in a larger study.
+An AI reviewer may perform the same artifact-level checks and record
+`ai_audited`, but that status does not satisfy the human-review gate. Automated
+metrics do not replace visual review. A qualified dermatopathologist should
+approve the schema before expansion and review approximately 15 genuinely
+ambiguous cases in a larger study.
 
 ## Expansion and outreach
 
