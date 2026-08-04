@@ -14,6 +14,23 @@ OUTER_FENCE = re.compile(
 )
 
 
+class StrictJSONError(ValueError):
+    pass
+
+
+def reject_non_finite(value: str) -> None:
+    raise StrictJSONError(f"Non-finite JSON number is not allowed: {value}")
+
+
+def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> Dict[str, Any]:
+    result: Dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise StrictJSONError(f"Duplicate JSON key is not allowed: {key}")
+        result[key] = value
+    return result
+
+
 def deterministic_unfence(raw_text: str) -> str:
     stripped = raw_text.strip()
     match = OUTER_FENCE.fullmatch(stripped)
@@ -30,9 +47,16 @@ def parse_and_validate(raw_text: str) -> Tuple[Optional[Dict[str, Any]], Dict[st
         "schema_errors": [],
     }
     try:
-        parsed = json.loads(candidate)
+        parsed = json.loads(
+            candidate,
+            object_pairs_hook=reject_duplicate_keys,
+            parse_constant=reject_non_finite,
+        )
     except json.JSONDecodeError as exc:
         metadata["parse_error"] = f"{exc.msg} at line {exc.lineno}, column {exc.colno}"
+        return None, metadata
+    except StrictJSONError as exc:
+        metadata["parse_error"] = str(exc)
         return None, metadata
     if not isinstance(parsed, dict):
         metadata["parse_error"] = "Top-level JSON value is not an object"

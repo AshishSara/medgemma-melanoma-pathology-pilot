@@ -3,13 +3,35 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_IDS = ("google/medgemma-4b-it", "google/medgemma-1.5-4b-it")
+MODEL_REVISIONS = {
+    "google/medgemma-4b-it": "290cda5eeccbee130f987c4ad74a59ae6f196408",
+    "google/medgemma-1.5-4b-it": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+}
 TEMPLATE_IDS = ("A", "B")
 CONDITIONS = ("clean", "ocr_degraded")
+DEVELOPMENT_CASE_IDS = ("MEL-001",)
+PROTOCOL_VERSION = "heldout-pilot-v2"
+FORMAL_RESPONSE_MODE = "json-prefill"
+FORMAL_DTYPE = "bfloat16"
+FORMAL_MAX_NEW_TOKENS = 1200
+JSON_ASSISTANT_PREFIX = "{"
+
+FORMAL_SEMANTIC_CASE_COUNT = 7
+FORMAL_BASE_REPORT_COUNT = 14
+FORMAL_DOCUMENT_CONDITION_COUNT = 28
+FORMAL_OUTPUT_COUNT = 56
+
+REVIEW_STATUS_PENDING = "pending"
+REVIEW_STATUS_AI_AUDITED = "ai_audited"
+REVIEW_STATUS_HUMAN_VERIFIED = "human_verified"
+HASH_BOUND_REVIEW_STATUSES = frozenset({REVIEW_STATUS_AI_AUDITED, REVIEW_STATUS_HUMAN_VERIFIED})
+VALID_REVIEW_STATUSES = frozenset({REVIEW_STATUS_PENDING, *HASH_BOUND_REVIEW_STATUSES})
 
 PRIMARY_FIELD_PATHS = (
     "specimen_site",
@@ -109,9 +131,40 @@ def select_primary_fields(value: Mapping[str, Any]) -> Dict[str, Any]:
     return {path: flattened.get(path) for path in PRIMARY_FIELD_PATHS}
 
 
+def is_formal_manifest_row(row: Mapping[str, Any]) -> bool:
+    return row["semantic_case_id"] not in DEVELOPMENT_CASE_IDS
+
+
+def formal_manifest_rows(
+    rows: Iterable[Mapping[str, Any]],
+) -> List[Mapping[str, Any]]:
+    return [row for row in rows if is_formal_manifest_row(row)]
+
+
+_MISSING = object()
+
+
+def values_exactly_equal(expected: Any, observed: Any) -> bool:
+    if observed is _MISSING:
+        return False
+    if isinstance(expected, bool) or isinstance(observed, bool):
+        return type(expected) is type(observed) and expected == observed
+    if isinstance(expected, (int, float)) and isinstance(observed, (int, float)):
+        return (
+            math.isfinite(float(expected))
+            and math.isfinite(float(observed))
+            and float(expected) == float(observed)
+        )
+    return type(expected) is type(observed) and expected == observed
+
+
 def compare_prediction(truth: Mapping[str, Any], prediction: Mapping[str, Any]) -> Dict[str, Any]:
     truth_fields = select_primary_fields(truth)
-    prediction_fields = select_primary_fields(prediction)
+    flattened_prediction = flatten_json(prediction)
+    prediction_fields = {
+        path: flattened_prediction[path] if path in flattened_prediction else _MISSING
+        for path in PRIMARY_FIELD_PATHS
+    }
     document_id_correct = truth.get("document_id") == prediction.get("document_id")
     exact_correct = 0
     true_positive = 0
@@ -128,20 +181,20 @@ def compare_prediction(truth: Mapping[str, Any], prediction: Mapping[str, Any]) 
     for path in PRIMARY_FIELD_PATHS:
         expected = truth_fields[path]
         observed = prediction_fields[path]
-        if expected == observed:
+        if values_exactly_equal(expected, observed):
             exact_correct += 1
             if expected is not None:
                 true_positive += 1
         else:
             mismatched_fields.append(path)
-            if observed is not None:
+            if observed is not _MISSING and observed is not None:
                 false_positive += 1
             if expected is not None:
                 false_negative += 1
 
         if expected is None:
             unsupported_opportunities += 1
-            if observed is not None:
+            if observed is not _MISSING and observed is not None:
                 unsupported_count += 1
                 unsupported_fields.append(path)
 

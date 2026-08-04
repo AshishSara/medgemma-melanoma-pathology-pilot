@@ -1,46 +1,20 @@
-You are extracting facts from a synthetic melanoma pathology report image.
+You are extracting facts from one synthetic melanoma pathology report image.
 
-Return exactly one JSON object and nothing else. Do not use Markdown fences.
-Use only facts explicitly stated for the CURRENT SPECIMEN in the report.
-Do not calculate or infer staging. Do not copy values that appear only in
-clinical history or a prior report. Use JSON null when a field is not stated
-for the current specimen. A missing mitotic rate is not zero. "Cannot be
-assessed" is not the same as "not identified."
+Return exactly one JSON object and nothing else. Do not explain your reasoning and do not use Markdown.
+Every non-null value must be explicitly printed for the CURRENT SPECIMEN in the image. Ignore history and prior-report text. Use JSON null when a current-specimen field is absent. Do not calculate or infer staging. A missing mitotic rate is null, not zero. Do not copy any value from these instructions.
 
-Normalize:
-- document_id: copy the exact synthetic report ID printed near the top of the
-  image; do not reuse the illustrative ID in the JSON shape below
-- specimen_site: lowercase site without laterality (for example, "upper back")
-- laterality: "left", "right", "midline", or null
-- diagnosis: "invasive_melanoma", "melanoma_in_situ",
-  "residual_melanoma_in_situ_no_invasive", or null
-- breslow_qualifier: "exact", "at_least", "approximate", or null
-- ulceration: "present", "not_identified", "cannot_be_assessed", or null
-- mitotic_qualifier: "exact", "at_least", or null
-- each margin status: "involved", "not_involved", "cannot_be_assessed", or null
-- staging values: reproduce an explicitly reported value as a string; otherwise null
+Include exactly these top-level keys in this order:
+document_id, specimen_site, laterality, diagnosis, breslow_thickness_mm, breslow_qualifier, ulceration, mitotic_rate_per_mm2, mitotic_qualifier, margins, staging.
 
-Required JSON shape:
-{
-  "document_id": "MEL-000-A",
-  "specimen_site": null,
-  "laterality": null,
-  "diagnosis": null,
-  "breslow_thickness_mm": null,
-  "breslow_qualifier": null,
-  "ulceration": null,
-  "mitotic_rate_per_mm2": null,
-  "mitotic_qualifier": null,
-  "margins": {
-    "invasive_peripheral": null,
-    "invasive_deep": null,
-    "in_situ_peripheral": null,
-    "in_situ_deep": null
-  },
-  "staging": {
-    "pT": null,
-    "pN": null,
-    "pM": null,
-    "stage_group": null
-  }
-}
+Normalization rules:
+- document_id: exact report ID printed in the image.
+- specimen_site: lowercase anatomical site with any laterality word removed.
+- laterality: left, right, midline, or null.
+- diagnosis: invasive_melanoma, melanoma_in_situ, residual_melanoma_in_situ_no_invasive, or null.
+- breslow_thickness_mm: JSON number in millimeters with the unit removed, or null.
+- breslow_qualifier: exact, at_least, approximate, or null. If thickness is null, qualifier is null.
+- ulceration: present, not_identified, cannot_be_assessed, or null.
+- mitotic_rate_per_mm2: JSON number per square millimeter with the unit removed, or null.
+- mitotic_qualifier: exact, at_least, or null. If rate is null, qualifier is null.
+- margins: an object with exactly invasive_peripheral, invasive_deep, in_situ_peripheral, in_situ_deep. Each value is involved, not_involved, cannot_be_assessed, or null.
+- staging: an object with exactly pT, pN, pM, stage_group. Copy an explicitly reported staging string exactly; otherwise null.
