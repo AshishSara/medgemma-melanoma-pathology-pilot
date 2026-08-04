@@ -1,21 +1,45 @@
 {
-  "base_report_count": 16,
+  "assistant_prefix": "{",
+  "assistant_prefix_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
   "completed_output_count": 0,
   "conditions": [
     "clean",
     "ocr_degraded"
   ],
   "dataset_version": "pilot-v1",
-  "document_condition_count": 32,
-  "intended_output_count": 64,
-  "last_evaluated_utc": "2026-08-04T15:21:25.603589+00:00",
+  "development_case_ids": [
+    "MEL-001"
+  ],
+  "do_sample": false,
+  "dtype": "bfloat16",
+  "formal_base_report_count": 14,
+  "formal_case_ids": [
+    "MEL-002",
+    "MEL-003",
+    "MEL-004",
+    "MEL-005",
+    "MEL-006",
+    "MEL-007",
+    "MEL-008"
+  ],
+  "formal_document_condition_count": 28,
+  "formal_semantic_case_count": 7,
+  "intended_output_count": 56,
+  "invalid_provenance_output_count": 0,
+  "last_evaluated_utc": "2026-08-04T17:34:40.960317+00:00",
+  "max_new_tokens": 1200,
+  "model_revisions": {
+    "google/medgemma-1.5-4b-it": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+    "google/medgemma-4b-it": "290cda5eeccbee130f987c4ad74a59ae6f196408"
+  },
   "models": [
     "google/medgemma-4b-it",
     "google/medgemma-1.5-4b-it"
   ],
-  "prompt_sha256": "a791c3e1ca0c9ea57ef9c8fbd8a7341463097ae80289a28de847833f28934e5a",
+  "prompt_sha256": "139bc7f1dc858af0a5a2643f38b396f71c40e39e1419c14a281dd78f03ee801b",
+  "protocol_version": "heldout-pilot-v2",
+  "response_mode": "json-prefill",
   "run_record_paths": [],
-  "runs": [],
   "schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
   "status": "NOT_RUN"
 }
