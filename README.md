@@ -1,21 +1,22 @@
 # MedGemma melanoma pathology extraction pilot
 
-This repository is a small, deterministic technical gate for testing whether
-MedGemma can extract management-critical melanoma fields from heterogeneous
+This repository is a deterministic technical gate for testing whether MedGemma
+can extract management-critical melanoma fields from heterogeneous synthetic
 pathology-report images without inventing unstated values.
 
-> Status: **materials ready; scored MedGemma inference not yet run.** The
-> synthetic corpus, paired render conditions, JSON ground truth, frozen prompt,
-> validator, inference harness, metric code, and manual-review ledger are
-> reproducible. Repository terms are accepted; a suitable GPU runtime and the
-> 64-output scored run remain gating items. Do not use the outreach draft yet.
+> Status: **held-out protocol frozen; formal inference not yet scored.** The
+> synthetic corpus, paired render conditions, JSON ground truth, inference
+> harness, metrics, and review ledger are reproducible. Gated model access and
+> a free Colab T4/BF16 runtime have been confirmed. Do not use the outreach
+> draft until all 56 formal outputs are present and manually reviewed.
 
 ## Research question
 
 Can MedGemma 1.5 accurately extract specimen site and laterality, Breslow
-thickness, ulceration, mitotic rate, margin status, and reported staging
-elements from heterogeneous pathology-report PDFs without inventing unstated
-values, and how robust is extraction to bounded raster/OCR degradation?
+thickness, ulceration, mitotic rate, margin status, and explicitly reported
+staging elements from heterogeneous pathology-report PDFs without inventing
+unstated values, and how robust is extraction to bounded raster/OCR
+degradation?
 
 The defensible novelty is the combination of narrative melanoma management
 fields, explicit abstention targets, unsupported-field measurement, and paired
@@ -25,22 +26,49 @@ evaluation dataset.
 
 ## Pilot design
 
-- Eight semantic cases rendered through two original report templates: 16
-  wholly synthetic, single-page base reports.
-- A clean text PDF and a paired image-only degraded PDF for every case.
-- Deterministic JSON ground truth generated from `data/cases.csv`.
-- Identical prompt and greedy decoding for:
-  - `google/medgemma-4b-it`
-  - `google/medgemma-1.5-4b-it`
-- 16 base reports x 2 render conditions x 2 models = 64 planned outputs.
-- Primary metrics: per-field exact match/F1 and unsupported-field rate.
-- Secondary metrics: complete-report accuracy, JSON validity, and performance
-  by template and render condition.
-- Manual review of all 64 pilot outputs before any outreach.
+- Eight semantic cases are rendered through two original report templates,
+  producing 16 wholly synthetic, single-page report-layout documents.
+- Every document has a clean text PDF and a matched image-only degraded PDF,
+  producing 32 rendered inputs in the complete corpus.
+- `MEL-001` (two layouts and both renderings) is quarantined as development
+  data. Its two clean layouts were used to select the prompt and response
+  constraint; none of its four inputs enters a formal metric.
+- The held-out set is `MEL-002` through `MEL-008`: 7 semantic cases, 14
+  report-layout documents, and 28 rendered inputs forming 14 clean/degraded
+  pairs.
+- The primary technical gate is MedGemma 1.5 4B IT. MedGemma 1 4B IT is a
+  secondary shared-protocol version comparator.
+- The formal matrix is 28 inputs x 2 models = 56 outputs.
+- Primary metrics are 16-field exact match/F1 and unsupported-field rate.
+  Secondary metrics include strict JSON/Schema validity, complete-report
+  accuracy, paired clean-to-degraded change, and results by template and
+  condition.
+- Every formal output must be visually reviewed before outreach.
 
-PDF files are rendered to images before inference because the released model
-accepts text plus images, not PDF bytes. This mirrors the document-understanding
-method described in the technical report.
+This is a manually prompt-optimized, no-example feasibility pilot—not an
+unqualified stock-prompt or fine-tuned evaluation.
+
+## Frozen inference behavior
+
+The `heldout-pilot-v2` protocol uses:
+
+- exact pinned model revisions recorded in `results/run_manifest.json`;
+- BF16 on a Tesla T4;
+- greedy decoding (`do_sample=False`) with a 1,200-token ceiling;
+- `prompts/extraction_prompt.txt`;
+- a literal one-character assistant prefix, `{`, supplied through
+  Transformers `continue_final_message=True`.
+
+The strict scored response is the assembled assistant message, including the
+harness-supplied opening brace. The generated continuation is retained
+separately. Raw bytes, hashes, image/prompt/schema hashes, model revision,
+device, dtype, dependency versions, and generation settings are recorded for
+every call.
+
+Parsing may trim surrounding whitespace and remove at most one complete outer
+Markdown fence. It does not extract a later brace-delimited object, strip a
+reasoning envelope, insert or drop keys, coerce values, map synonyms, infer
+staging, or otherwise repair model output.
 
 ## Reproduce the materials
 
@@ -48,60 +76,77 @@ Python 3.9+ and [`uv`](https://docs.astral.sh/uv/) are recommended.
 
 ```bash
 uv sync --extra dev
-uv run python scripts/generate_reports.py
 uv run python scripts/validate_artifacts.py
 uv run pytest
 ```
 
-The generator uses fixed data, fixed dates, and deterministic perturbation
-parameters. Clean PDFs are under `output/pdf/clean/`; degraded image-only PDFs
-are under `output/pdf/ocr_degraded/`; model-ready PNGs are under
-`output/rendered/`.
+To regenerate the synthetic corpus:
 
-## Run inference
+```bash
+uv run python scripts/generate_reports.py
+uv run python scripts/validate_artifacts.py
+```
+
+The generator uses fixed data, dates, and perturbation parameters. Model inputs
+are the committed PNGs under `output/rendered/`; their SHA-256 values are frozen
+in `data/report_manifest.csv`. Clean PDFs are under `output/pdf/clean/`, and
+degraded image-only PDFs are under `output/pdf/ocr_degraded/`.
+
+## Run the held-out inference matrix
 
 The local backend requires accepted HAI-DEF terms, authenticated Hugging Face
 access, and the optional inference dependencies:
 
 ```bash
 uv sync --extra inference
+
 uv run python scripts/run_inference.py \
   --backend transformers \
   --model google/medgemma-1.5-4b-it \
-  --condition clean
-```
+  --revision 91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b \
+  --condition all \
+  --scope formal \
+  --response-mode json-prefill \
+  --dtype bfloat16 \
+  --max-new-tokens 1200
 
-Run all four model/condition cells, then evaluate:
-
-```bash
 uv run python scripts/run_inference.py \
   --backend transformers \
   --model google/medgemma-4b-it \
-  --condition all
-uv run python scripts/run_inference.py \
-  --backend transformers \
-  --model google/medgemma-1.5-4b-it \
-  --condition all
+  --revision 290cda5eeccbee130f987c4ad74a59ae6f196408 \
+  --condition all \
+  --scope formal \
+  --response-mode json-prefill \
+  --dtype bfloat16 \
+  --max-new-tokens 1200
+
 uv run python scripts/evaluate.py
+uv run python scripts/validate_artifacts.py
 ```
 
-An OpenAI-compatible vision endpoint backend is also supported for a
-self-deployed vLLM/Vertex-compatible service. No model weights, tokens, or
-patient data belong in this repository.
+Formal raw responses are under `results/raw/`, model-only continuations under
+`results/generated_continuations/`, parsed objects under `results/normalized/`,
+and provenance records under `results/run_records/`. Development runs are
+routed under `results/development/` and cannot enter the formal evaluator.
+
+An OpenAI-compatible endpoint remains available for separately labeled direct
+exploration, but it is not equivalent to the frozen Transformers JSON-prefill
+protocol.
 
 ## Gate status
 
-See [`docs/gate_status.md`](docs/gate_status.md). Publication is useful only as
-an honest reproducibility artifact; it is not evidence that model inference
-passed. The HAI-DEF feedback form, developer forum, and only then individual
-research outreach are the intended sequence.
+See [`docs/gate_status.md`](docs/gate_status.md). Publication is a
+reproducibility artifact, not evidence that model inference passed. The
+intended sequence is: complete and review the pilot, submit the HAI-DEF use
+case, use the developer forum or GitHub for technical questions, and only then
+consider individual research outreach.
 
 ## Safety and scope
 
 All reports are synthetic and visibly watermarked. No real patient data are
 used. This is a research evaluation, not a medical device, diagnostic system,
-or clinical recommendation. Schema and ambiguous cases require review by a
-qualified dermatopathologist before expansion.
+or clinical recommendation. A qualified dermatopathologist should approve the
+schema before expansion and review genuinely ambiguous cases.
 
 ## Evidence
 
@@ -110,6 +155,6 @@ qualified dermatopathologist before expansion.
 - [Official MedGemma get-started and engagement paths](https://developers.google.com/health-ai-developer-foundations/medgemma/get-started)
 - [Current CAP cancer protocol index](https://www.cap.org/protocols-and-guidelines/cancer-protocols/current-cancer-protocols/)
 
-MedGemma model weights remain governed by the HAI-DEF terms. This repository's
-original code and synthetic artifacts are MIT-licensed; it does not redistribute
+MedGemma weights remain governed by the HAI-DEF terms. This repository's
+original code and synthetic artifacts are MIT-licensed and do not redistribute
 model weights.

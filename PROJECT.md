@@ -14,9 +14,10 @@ tags:
 
 ## Current decision
 
-The repository materials can be published, but outreach is on hold until the
-MedGemma run and manual review are complete. A published harness is not a
-completed technical gate.
+The public corpus is canonical and the held-out `heldout-pilot-v2` protocol is
+frozen. `MEL-001` is development-only; formal scoring uses `MEL-002` through
+`MEL-008`. Outreach remains on hold until both pinned-model runs and all manual
+reviews are complete. A published harness is not a completed technical gate.
 
 ## Working links
 
@@ -29,7 +30,7 @@ completed technical gate.
 
 ## Next concrete action
 
-The HAI-DEF terms are accepted for both model repositories. Provide a suitable
-authenticated GPU-backed environment or self-deployed endpoint, then run the
-frozen 64-output matrix, review every output, update the pilot sentence, and
-submit the HAI-DEF feedback form before emailing an individual researcher.
+Publish the held-out protocol commit, pin Colab to that immutable commit, and
+run the 56-output BF16 matrix on the confirmed Tesla T4. Then evaluate and
+visually review every hash-bound output, update the pilot sentence, and submit
+the HAI-DEF feedback form before emailing an individual researcher.
