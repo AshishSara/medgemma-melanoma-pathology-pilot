@@ -8,7 +8,7 @@ Last updated: 2026-08-04
 | 2. Confirm MedGemma 1.5 access and inference | Accepted gated terms, authenticated model pull or deployed endpoint, recorded hardware | **In progress: repository terms accepted; GPU runtime pending** |
 | 3. Produce valid JSON for clean and degraded inputs | 32 raw outputs for MedGemma 1.5 and schema-validation log | Pending gate 2 |
 | 4. Verify every output | Completed manual-review rows with adjudication | Pending gate 3 |
-| 5. Publish reproducible repository | Public GitHub URL at an immutable commit | Pending publication |
+| 5. Publish reproducible repository | Public GitHub URL at an immutable commit | Published at [`5a4d965`](https://github.com/AshishSara/medgemma-melanoma-pathology-pilot/tree/5a4d965e1ca67637e49fc4bd5c96889eb28c3b33) |
 | 6. Submit the use case through HAI-DEF | Feedback-form confirmation recorded locally | Pending completed pilot |
 
 ## Why gate 2 is not marked complete
