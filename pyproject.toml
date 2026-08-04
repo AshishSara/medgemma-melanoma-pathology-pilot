@@ -1,0 +1,35 @@
+[project]
+name = "medgemma-melanoma-pathology-pilot"
+version = "0.1.0"
+description = "A deterministic synthetic pilot for melanoma pathology PDF-to-JSON extraction."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Ashish Sara" }]
+dependencies = [
+  "jsonschema>=4.23,<5",
+  "Pillow>=10.4,<12",
+  "pypdf>=5.1,<7",
+  "pypdfium2>=4.30,<6",
+  "reportlab>=4.2,<5",
+  "requests>=2.32,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "ruff>=0.9,<1"]
+inference = [
+  "accelerate>=1.2,<2",
+  "torch>=2.5,<3",
+  "transformers>=4.50,<5",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

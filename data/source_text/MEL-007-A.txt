@@ -1,0 +1,12 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-007-A
+Procedure: Punch biopsy
+Specimen site: Posterior trunk
+Diagnosis: Invasive melanoma, nodular melanoma
+Breslow thickness: At least 2.0 mm
+Ulceration: Cannot be assessed
+Mitotic rate: At least 4 per mm2
+Invasive melanoma - peripheral margin: Involved
+Invasive melanoma - deep margin: Involved
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The epidermal surface is absent and invasive melanoma extends to all tissue edges.

@@ -1,0 +1,21 @@
+{
+  "base_report_count": 16,
+  "completed_output_count": 0,
+  "conditions": [
+    "clean",
+    "ocr_degraded"
+  ],
+  "dataset_version": "pilot-v1",
+  "document_condition_count": 32,
+  "intended_output_count": 64,
+  "last_evaluated_utc": "2026-08-04T15:21:25.603589+00:00",
+  "models": [
+    "google/medgemma-4b-it",
+    "google/medgemma-1.5-4b-it"
+  ],
+  "prompt_sha256": "a791c3e1ca0c9ea57ef9c8fbd8a7341463097ae80289a28de847833f28934e5a",
+  "run_record_paths": [],
+  "runs": [],
+  "schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "status": "NOT_RUN"
+}

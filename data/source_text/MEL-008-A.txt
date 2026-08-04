@@ -1,0 +1,11 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-008-A
+Procedure: Re-excision
+Specimen site: Left upper arm
+Diagnosis: Residual melanoma in situ, lentiginous melanoma in situ; no residual invasive melanoma identified
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+CLINICAL HISTORY - PRIOR REPORT ONLY
+Prior outside biopsy reported invasive melanoma with Breslow thickness 0.9 mm and pT1b.
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No residual invasive melanoma is identified.

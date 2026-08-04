@@ -7,8 +7,8 @@ pathology-report images without inventing unstated values.
 > Status: **materials ready; scored MedGemma inference not yet run.** The
 > synthetic corpus, paired render conditions, JSON ground truth, frozen prompt,
 > validator, inference harness, metric code, and manual-review ledger are
-> reproducible. Model access and the 64-output scored run remain gating items.
-> Do not use the outreach draft yet.
+> reproducible. Repository terms are accepted; a suitable GPU runtime and the
+> 64-output scored run remain gating items. Do not use the outreach draft yet.
 
 ## Research question
 

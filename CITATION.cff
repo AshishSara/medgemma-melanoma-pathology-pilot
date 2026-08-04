@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: MedGemma Melanoma Pathology Extraction Pilot
+message: If you use this synthetic benchmark, cite this repository and MedGemma.
+type: software
+authors:
+  - family-names: Sara
+    given-names: Ashish
+version: 0.1.0
+date-released: 2026-08-04
+license: MIT
+references:
+  - type: article
+    title: MedGemma 1.5 Technical Report
+    authors:
+      - family-names: Sellergren
+        given-names: Andrew
+    year: 2026
+    doi: 10.48550/arXiv.2604.05081

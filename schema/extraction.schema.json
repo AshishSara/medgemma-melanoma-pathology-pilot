@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/medgemma-melanoma-pilot/extraction.schema.json",
+  "title": "Melanoma pathology extraction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_id",
+    "specimen_site",
+    "laterality",
+    "diagnosis",
+    "breslow_thickness_mm",
+    "breslow_qualifier",
+    "ulceration",
+    "mitotic_rate_per_mm2",
+    "mitotic_qualifier",
+    "margins",
+    "staging"
+  ],
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "pattern": "^MEL-[0-9]{3}-[AB]$"
+    },
+    "specimen_site": {
+      "type": ["string", "null"]
+    },
+    "laterality": {
+      "enum": ["left", "right", "midline", null]
+    },
+    "diagnosis": {
+      "enum": [
+        "invasive_melanoma",
+        "melanoma_in_situ",
+        "residual_melanoma_in_situ_no_invasive",
+        null
+      ]
+    },
+    "breslow_thickness_mm": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "breslow_qualifier": {
+      "enum": ["exact", "at_least", "approximate", null]
+    },
+    "ulceration": {
+      "enum": ["present", "not_identified", "cannot_be_assessed", null]
+    },
+    "mitotic_rate_per_mm2": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "mitotic_qualifier": {
+      "enum": ["exact", "at_least", null]
+    },
+    "margins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "invasive_peripheral",
+        "invasive_deep",
+        "in_situ_peripheral",
+        "in_situ_deep"
+      ],
+      "properties": {
+        "invasive_peripheral": {
+          "enum": ["involved", "not_involved", "cannot_be_assessed", null]
+        },
+        "invasive_deep": {
+          "enum": ["involved", "not_involved", "cannot_be_assessed", null]
+        },
+        "in_situ_peripheral": {
+          "enum": ["involved", "not_involved", "cannot_be_assessed", null]
+        },
+        "in_situ_deep": {
+          "enum": ["involved", "not_involved", "cannot_be_assessed", null]
+        }
+      }
+    },
+    "staging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pT", "pN", "pM", "stage_group"],
+      "properties": {
+        "pT": {
+          "type": ["string", "null"]
+        },
+        "pN": {
+          "type": ["string", "null"]
+        },
+        "pM": {
+          "type": ["string", "null"]
+        },
+        "stage_group": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "breslow_thickness_mm": {
+            "type": "null"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "breslow_qualifier": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "breslow_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mitotic_rate_per_mm2": {
+            "type": "null"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mitotic_qualifier": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "mitotic_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

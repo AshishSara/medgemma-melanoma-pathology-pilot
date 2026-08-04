@@ -1,0 +1,12 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-005-A
+Procedure: Elliptical excision
+Specimen site: Midline central chest
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: 0.3 mm
+Ulceration: Not identified
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Reported pT: pT1a
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No microsatellites are seen.

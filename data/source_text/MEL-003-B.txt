@@ -1,0 +1,11 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-003-B
+Midline posterior scalp, Wide local excision:
+Invasive melanoma, superficial spreading melanoma.
+Breslow thickness is 2.4 mm.
+Ulceration: present.
+Mitotic rate is 6 per mm2.
+invasive melanoma peripheral margin: not involved; invasive melanoma deep margin: not involved; melanoma in situ peripheral margin: not involved; melanoma in situ deep margin: not involved.
+Reported pathologic classification - pT: pT3b; pN: pN not assigned.
+COMMENT
+The closest invasive melanoma margin is 7 mm.

@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": null,
+  "breslow_thickness_mm": null,
+  "diagnosis": "residual_melanoma_in_situ_no_invasive",
+  "document_id": "MEL-008-A",
+  "laterality": "left",
+  "margins": {
+    "in_situ_deep": "not_involved",
+    "in_situ_peripheral": "not_involved",
+    "invasive_deep": null,
+    "invasive_peripheral": null
+  },
+  "mitotic_qualifier": null,
+  "mitotic_rate_per_mm2": null,
+  "specimen_site": "upper arm",
+  "staging": {
+    "pM": null,
+    "pN": null,
+    "pT": null,
+    "stage_group": null
+  },
+  "ulceration": null
+}

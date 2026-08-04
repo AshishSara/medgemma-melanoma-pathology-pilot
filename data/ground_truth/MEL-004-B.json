@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": null,
+  "breslow_thickness_mm": null,
+  "diagnosis": "melanoma_in_situ",
+  "document_id": "MEL-004-B",
+  "laterality": "right",
+  "margins": {
+    "in_situ_deep": "not_involved",
+    "in_situ_peripheral": "involved",
+    "invasive_deep": null,
+    "invasive_peripheral": null
+  },
+  "mitotic_qualifier": null,
+  "mitotic_rate_per_mm2": null,
+  "specimen_site": "shoulder",
+  "staging": {
+    "pM": null,
+    "pN": null,
+    "pT": "pTis",
+    "stage_group": null
+  },
+  "ulceration": null
+}

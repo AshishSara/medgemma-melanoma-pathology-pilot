@@ -1,0 +1,17 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-006-A
+Procedure: Wide local excision with sentinel node
+Specimen site: Left thigh
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: 1.0 mm
+Ulceration: Not identified
+Mitotic rate: 2 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT1b
+Reported pN: pN0
+Reported stage group: Stage IA
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The separately submitted sentinel node is negative for melanoma (0 of 1).

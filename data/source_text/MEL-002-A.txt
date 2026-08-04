@@ -1,0 +1,13 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-002-A
+Procedure: Punch biopsy
+Specimen site: Left dorsal forearm
+Diagnosis: Invasive melanoma, nodular melanoma
+Breslow thickness: At least 1.0 mm
+Ulceration: Present
+Mitotic rate: 3 per mm2
+Invasive melanoma - peripheral margin: Involved
+Invasive melanoma - deep margin: Involved
+Melanoma in situ - peripheral margin: Involved
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The invasive melanoma is transected at the base.

@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": "at_least",
+  "breslow_thickness_mm": 1.0,
+  "diagnosis": "invasive_melanoma",
+  "document_id": "MEL-002-A",
+  "laterality": "left",
+  "margins": {
+    "in_situ_deep": null,
+    "in_situ_peripheral": "involved",
+    "invasive_deep": "involved",
+    "invasive_peripheral": "involved"
+  },
+  "mitotic_qualifier": "exact",
+  "mitotic_rate_per_mm2": 3.0,
+  "specimen_site": "dorsal forearm",
+  "staging": {
+    "pM": null,
+    "pN": null,
+    "pT": null,
+    "stage_group": null
+  },
+  "ulceration": "present"
+}

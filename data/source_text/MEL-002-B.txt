@@ -1,0 +1,10 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-002-B
+Left dorsal forearm, Punch biopsy:
+Invasive melanoma, nodular melanoma.
+Breslow thickness is At least 1.0 mm.
+Ulceration: present.
+Mitotic rate is 3 per mm2.
+invasive melanoma peripheral margin: involved; invasive melanoma deep margin: involved; melanoma in situ peripheral margin: involved.
+COMMENT
+The invasive melanoma is transected at the base.

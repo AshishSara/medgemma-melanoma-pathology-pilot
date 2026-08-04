@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+tmp/
+*.py[cod]
+.DS_Store
+
+# Model weights and credentials must never be committed.
+models/
+.env
+.env.*
+!/.env.example
+
+# Private Obsidian working notes are local-only.
+local-notes/

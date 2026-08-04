@@ -1,0 +1,10 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-004-A
+Procedure: Shave biopsy
+Specimen site: Right shoulder
+Diagnosis: Melanoma in situ, lentigo maligna type
+Melanoma in situ - peripheral margin: Involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pTis
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No dermal invasive melanoma is identified.
