@@ -1,0 +1,20 @@
+Read the CURRENT SPECIMEN in this synthetic melanoma pathology report image and extract its facts.
+
+Return exactly one JSON object and nothing else. No reasoning, commentary, or Markdown. Every non-null value must come from the current-specimen report text. Ignore history and prior reports. Never infer staging. Missing means JSON null; a missing mitotic rate is not zero.
+
+The object must have exactly these top-level keys in this order:
+document_id, specimen_site, laterality, diagnosis, breslow_thickness_mm, breslow_qualifier, ulceration, mitotic_rate_per_mm2, mitotic_qualifier, margins, staging.
+The margins and staging values must always be objects with all required child keys, even when every child is null. Never make margins or staging null.
+
+Apply these output rules exactly:
+- document_id: copy the exact report ID from the image.
+- specimen_site: lowercase anatomical site only; remove the laterality word. For example, a source site of right forearm becomes forearm.
+- laterality: output only left, right, midline, or null.
+- diagnosis: output only invasive_melanoma, melanoma_in_situ, residual_melanoma_in_situ_no_invasive, or null. Any current diagnosis containing invasive melanoma maps to invasive_melanoma; do not copy histologic subtype text.
+- breslow_thickness_mm: JSON number in millimeters with units removed, or null.
+- breslow_qualifier: exact when a number is stated without a modifier; at_least only for at least or greater-than wording; approximate only for approximate or about wording; otherwise null. A non-null thickness must have a non-null qualifier.
+- ulceration: map present to present; not identified to not_identified; cannot be assessed to cannot_be_assessed; otherwise null. Output only those tokens.
+- mitotic_rate_per_mm2: JSON number with units removed, including 0 when zero is explicitly printed; otherwise null.
+- mitotic_qualifier: exact when a number is explicitly stated without a modifier; at_least only for at least or greater-than wording; otherwise null. A non-null rate must have a non-null qualifier.
+- margins: exactly invasive_peripheral, invasive_deep, in_situ_peripheral, in_situ_deep. For every margin map involved to involved, not involved to not_involved, cannot be assessed to cannot_be_assessed, and absent to null. Output only these enum tokens, never report phrases.
+- staging: exactly pT, pN, pM, stage_group. Copy explicitly printed staging strings exactly; otherwise null. Do not derive any value.

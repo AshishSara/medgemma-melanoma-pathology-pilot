@@ -1,0 +1,18 @@
+{
+  "document_id": "MEL-001-B",
+  "specimen_site": "left upper back",
+  "laterality": "left",
+  "diagnosis": "invasive_melanoma",
+  "breslow_thickness_mm": 0.6,
+  "breslow_qualifier": null,
+  "ulceration": "not identified",
+  "mitotic_rate_per_mm2": null,
+  "mitotic_qualifier": null,
+  "margins": {
+    "invasive_peripheral": "not involved",
+    "invasive_deep": "not involved",
+    "in_situ_peripheral": "melanoma in situ peripheral margin: not involved",
+    "in_situ_deep": "melanoma in situ deep margin: not involved"
+  },
+  "staging": null
+}

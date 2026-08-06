@@ -1,0 +1,12 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-105-A
+Procedure: Shave biopsy
+Specimen site: Left lateral heel
+Diagnosis: Invasive melanoma, acral lentiginous melanoma
+Breslow thickness: At least 1.6 mm
+Ulceration: Cannot be assessed
+Mitotic rate: At least 3 per mm2
+Invasive melanoma - peripheral margin: Involved
+Invasive melanoma - deep margin: Involved
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The epidermis is focally absent and invasive melanoma reaches the deep tissue edge.

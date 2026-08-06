@@ -1,0 +1,18 @@
+{
+  "breslow_qualifier": "at_least",
+  "breslow_thickness_mm": 0.9,
+  "diagnosis": "residual melanoma in situ, lentiginous melanoma in situ; no residual invasive melanoma identified",
+  "document_id": "MEL-008-A",
+  "laterality": "left",
+  "margins": {
+    "in_situ_deep": "not_involved",
+    "in_situ_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "invasive_peripheral": "not_involved"
+  },
+  "mitotic_qualifier": null,
+  "mitotic_rate_per_mm2": null,
+  "specimen_site": "left upper arm",
+  "staging": null,
+  "ulceration": null
+}

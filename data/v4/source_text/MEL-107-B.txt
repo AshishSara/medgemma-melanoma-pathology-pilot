@@ -1,0 +1,11 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-107-B
+Midline mid back, Wide local excision with sentinel nodes:
+Invasive melanoma, nodular melanoma.
+Breslow thickness is 3.1 mm.
+Ulceration: present.
+Mitotic rate is 7 per mm2.
+invasive melanoma peripheral margin: not involved; invasive melanoma deep margin: not involved; melanoma in situ peripheral margin: not involved; melanoma in situ deep margin: not involved.
+Reported pathologic classification - pT: pT3b; pN: pN0; pM: pM not assigned; stage group: Stage IIB.
+COMMENT
+Two separately submitted sentinel nodes are negative for melanoma (0 of 2).

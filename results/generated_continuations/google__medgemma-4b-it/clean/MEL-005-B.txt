@@ -1,0 +1,23 @@
+
+  "document_id": "MEL-005-B",
+  "specimen_site": "midline central chest, elliptical excision",
+  "laterality": "midline",
+  "diagnosis": "invasive melanoma, superficial spreading melanoma",
+  "breslow_thickness_mm": "0.3",
+  "breslow_qualifier": "at_least",
+  "ulceration": "not_identified",
+  "mitotic_rate_per_mm2": null,
+  "mitotic_qualifier": null,
+  "margins": {
+    "invasive_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "in_situ_peripheral": null,
+    "in_situ_deep": null
+  },
+  "staging": {
+    "pT": "pt1a",
+    "pN": null,
+    "pM": null,
+    "stage_group": null
+  }
+}

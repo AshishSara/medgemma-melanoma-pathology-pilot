@@ -44,7 +44,7 @@ schema before any clinical interpretation.
 
 ## Engagement order
 
-1. Complete and manually review the technical gate.
+1. Complete the technical run and human manual review.
 2. Submit the use case through the
    [HAI-DEF feedback form](https://services.google.com/fb/forms/hai-def-feedback/).
 3. Use the [HAI-DEF developer forum](https://discuss.ai.google.dev/c/hai-def/62)

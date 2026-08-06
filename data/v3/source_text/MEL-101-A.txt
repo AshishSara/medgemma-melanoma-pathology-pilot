@@ -1,0 +1,15 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-101-A
+Procedure: Excisional biopsy
+Specimen site: Right lower leg
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: 0.9 mm
+Ulceration: Not identified
+Mitotic rate: 1 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT1b
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+Tumor-infiltrating lymphocytes are present and nonbrisk.

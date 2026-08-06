@@ -1,0 +1,18 @@
+{
+  "document_id": "MEL-007-A",
+  "specimen_site": "posterior trunk",
+  "laterality": "null",
+  "diagnosis": "invasive_melanoma, nodular_melanoma",
+  "breslow_thickness_mm": "2.0",
+  "breslow_qualifier": "at_least",
+  "ulceration": "cannot_be_assessed",
+  "mitotic_rate_per_mm2": "4",
+  "mitotic_qualifier": "at_least",
+  "margins": {
+    "invasive_peripheral": "involved",
+    "invasive_deep": "involved",
+    "in_situ_peripheral": "null",
+    "in_situ_deep": "null"
+  },
+  "staging": null
+}

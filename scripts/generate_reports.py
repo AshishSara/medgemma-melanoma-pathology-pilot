@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import io
 import json
 import random
@@ -14,14 +15,30 @@ import pypdfium2 as pdfium
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 from pilot_utils import (
     CONDITIONS,
+    DEVELOPMENT_CASE_IDS,
+    FORMAL_BASE_REPORT_COUNT,
+    FORMAL_DOCUMENT_CONDITION_COUNT,
+    FORMAL_DTYPE,
+    FORMAL_MAX_NEW_TOKENS,
+    FORMAL_OUTPUT_COUNT,
+    FORMAL_RESPONSE_MODE,
+    FORMAL_SEMANTIC_CASE_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
+    JSON_ASSISTANT_PREFIX,
     MODEL_IDS,
+    MODEL_REVISIONS,
+    PROTOCOL_VERSION,
+    REVIEW_STATUS_PENDING,
     ROOT,
     TEMPLATE_IDS,
     document_id,
+    formal_manifest_rows,
     ground_truth_from_case,
     load_cases,
     null_if_blank,
+    read_json,
     relative,
+    sha256_bytes,
     sha256_file,
     sha256_text,
     write_csv,
@@ -489,7 +506,7 @@ def output_paths(doc_id: str) -> Dict[str, Path]:
     }
 
 
-def generate() -> None:
+def generate(refresh_empty_ledgers: bool = False) -> None:
     cases = load_cases()
     if len(cases) != 8:
         raise ValueError(f"Pilot must contain exactly 8 semantic cases, found {len(cases)}")
@@ -582,20 +599,24 @@ def generate() -> None:
         "image_sha256",
     )
     write_csv(ROOT / "data" / "report_manifest.csv", manifest_fields, manifest_rows)
-    initialize_result_ledgers(manifest_rows)
+    initialize_result_ledgers(manifest_rows, refresh_empty_ledgers)
     print(
         f"Generated {len(cases)} cases, {len(cases) * len(TEMPLATE_IDS)} base reports, "
         f"and {len(manifest_rows)} document conditions."
     )
 
 
-def initialize_result_ledgers(manifest_rows: Sequence[Mapping[str, Any]]) -> None:
+def initialize_result_ledgers(
+    manifest_rows: Sequence[Mapping[str, Any]],
+    refresh_empty_ledgers: bool = False,
+) -> None:
     prompt_sha = sha256_file(ROOT / "prompts" / "extraction_prompt.txt")
     schema_sha = sha256_file(ROOT / "schema" / "extraction.schema.json")
+    formal_rows = formal_manifest_rows(manifest_rows)
     intended_rows = []
     review_rows = []
     for model_id in MODEL_IDS:
-        for item in manifest_rows:
+        for item in formal_rows:
             base = {
                 "model_id": model_id,
                 "semantic_case_id": item["semantic_case_id"],
@@ -608,6 +629,9 @@ def initialize_result_ledgers(manifest_rows: Sequence[Mapping[str, Any]]) -> Non
                     **base,
                     "run_status": "NOT_RUN",
                     "raw_present": "",
+                    "provenance_valid": "",
+                    "provenance_errors": "",
+                    "raw_output_sha256": "",
                     "parse_valid": "",
                     "schema_valid": "",
                     "document_id_correct": "",
@@ -629,7 +653,8 @@ def initialize_result_ledgers(manifest_rows: Sequence[Mapping[str, Any]]) -> Non
             review_rows.append(
                 {
                     **base,
-                    "review_status": "pending",
+                    "review_status": REVIEW_STATUS_PENDING,
+                    "raw_output_sha256": "",
                     "parse_valid": "",
                     "schema_valid": "",
                     "document_id_correct": "",
@@ -644,35 +669,66 @@ def initialize_result_ledgers(manifest_rows: Sequence[Mapping[str, Any]]) -> Non
 
     pilot_path = ROOT / "results" / "pilot_table.csv"
     review_path = ROOT / "results" / "manual_review.csv"
-    if not pilot_path.exists():
+    if refresh_empty_ledgers:
+        run_manifest_path = ROOT / "results" / "run_manifest.json"
+        current = read_json(run_manifest_path) if run_manifest_path.exists() else {}
+        raw_files = list((ROOT / "results" / "raw").glob("**/*.txt"))
+        hash_bound_reviews = False
+        if review_path.exists():
+            with review_path.open(newline="", encoding="utf-8") as handle:
+                hash_bound_reviews = any(
+                    row.get("review_status") in HASH_BOUND_REVIEW_STATUSES
+                    for row in csv.DictReader(handle)
+                )
+        if (
+            current.get("status", "NOT_RUN") != "NOT_RUN"
+            or current.get("completed_output_count", 0) != 0
+            or raw_files
+            or hash_bound_reviews
+        ):
+            raise ValueError("Refusing to refresh non-empty result ledgers")
+
+    if refresh_empty_ledgers or not pilot_path.exists():
         write_csv(pilot_path, intended_rows[0].keys(), intended_rows)
-    if not review_path.exists():
+    if refresh_empty_ledgers or not review_path.exists():
         write_csv(review_path, review_rows[0].keys(), review_rows)
 
     run_manifest_path = ROOT / "results" / "run_manifest.json"
-    if not run_manifest_path.exists():
+    if refresh_empty_ledgers or not run_manifest_path.exists():
         write_json(
             run_manifest_path,
             {
                 "dataset_version": DATASET_VERSION,
+                "protocol_version": PROTOCOL_VERSION,
                 "status": "NOT_RUN",
                 "models": list(MODEL_IDS),
+                "model_revisions": MODEL_REVISIONS,
                 "conditions": list(CONDITIONS),
-                "base_report_count": 16,
-                "document_condition_count": 32,
-                "intended_output_count": 64,
+                "development_case_ids": list(DEVELOPMENT_CASE_IDS),
+                "formal_semantic_case_count": FORMAL_SEMANTIC_CASE_COUNT,
+                "formal_base_report_count": FORMAL_BASE_REPORT_COUNT,
+                "formal_document_condition_count": FORMAL_DOCUMENT_CONDITION_COUNT,
+                "intended_output_count": FORMAL_OUTPUT_COUNT,
+                "completed_output_count": 0,
+                "response_mode": FORMAL_RESPONSE_MODE,
+                "assistant_prefix": JSON_ASSISTANT_PREFIX,
+                "assistant_prefix_sha256": sha256_bytes(JSON_ASSISTANT_PREFIX.encode("utf-8")),
+                "dtype": FORMAL_DTYPE,
+                "max_new_tokens": FORMAL_MAX_NEW_TOKENS,
+                "do_sample": False,
                 "prompt_sha256": prompt_sha,
                 "schema_sha256": schema_sha,
-                "runs": [],
+                "run_record_paths": [],
             },
         )
     metrics_path = ROOT / "results" / "metrics.json"
-    if not metrics_path.exists():
+    if refresh_empty_ledgers or not metrics_path.exists():
         write_json(
             metrics_path,
             {
                 "status": "NOT_RUN",
-                "intended_output_count": 64,
+                "protocol_version": PROTOCOL_VERSION,
+                "intended_output_count": FORMAL_OUTPUT_COUNT,
                 "completed_output_count": 0,
                 "message": "No MedGemma outputs have been scored.",
             },
@@ -681,9 +737,14 @@ def initialize_result_ledgers(manifest_rows: Sequence[Mapping[str, Any]]) -> Non
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--refresh-empty-ledgers",
+        action="store_true",
+        help="Rewrite ledgers only when no outputs or hash-bound reviews exist.",
+    )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
-    parse_args()
-    generate()
+    args = parse_args()
+    generate(args.refresh_empty_ledgers)

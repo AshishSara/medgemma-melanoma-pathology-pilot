@@ -1,0 +1,122 @@
+{
+  "document_id": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L004"
+      ]
+    },
+    "specimen_site": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L006"
+      ]
+    },
+    "laterality": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L006"
+      ]
+    },
+    "breslow_thickness_mm": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "mitotic_qualifier": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "breslow_qualifier": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "mitotic_rate_per_mm2": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "margins": 
+    {
+      "in_situ_peripheral": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L009"
+        ]
+      },
+      "in_situ_deep": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L009"
+        ]
+      }
+    
+    
+,
+    "invasive_deep": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "invasive_peripheral": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    }
+}
+    
+    
+,
+    "staging": 
+    {
+      "stage_group": 
+      {
+        "status": "absent",
+        "evidence_line_ids": []
+      },
+      "pT": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L010"
+        ]
+      }
+    
+    
+,
+    "pM": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "pN": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    }
+}
+    
+    
+,
+    "diagnosis": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L007"
+      ]
+    },
+    "ulceration": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    }
+}
+    
+    
+ 

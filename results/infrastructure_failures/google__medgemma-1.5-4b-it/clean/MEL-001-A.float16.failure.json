@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-08-04T16:39:58.270624+00:00",
+  "document_id": "MEL-001-A",
+  "model_id": "google/medgemma-1.5-4b-it",
+  "revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "failed_dtype": "float16",
+  "failure": "Zero-byte raw output; direct 64-token diagnostic generated only token id 0 (<pad>).",
+  "rerun_dtype": "bfloat16",
+  "rerun_reason": "T4/FP16 numerical or runtime incompatibility. PyTorch reports BF16 support, BF16 matmul was finite, and a direct BF16 64-token diagnostic produced coherent non-pad text."
+}

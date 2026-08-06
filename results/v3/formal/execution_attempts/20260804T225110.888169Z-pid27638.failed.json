@@ -1,0 +1,25 @@
+{
+  "completed_new_row_count": 3,
+  "condition": "all",
+  "current_row": {
+    "condition": "ocr_degraded",
+    "document_id": "MEL-104-B"
+  },
+  "error_message": "Expecting ',' delimiter at line 130, column 6",
+  "error_type": "StrictGeneratedJSONError",
+  "execution_attempt_id": "20260804T225110.888169Z-pid27638",
+  "failure_stage": "audit_validation",
+  "manifest_path": "data/v3/report_manifest.csv",
+  "manifest_sha256": "83a5d5a593ef4d7096105d1d5988f49e2ac483bdeb1b98619f2192922930cdb7",
+  "protocol_lock_path": "data/v3/protocol_lock.json",
+  "protocol_lock_sha256": "40c99841bfcc23b5daa33973ac649c57a299c21c79ce46a7bd9ed11eac54036f",
+  "protocol_source_commit": "6097cd633229dcf4d41c7f18fbea4d13d2bf17ee",
+  "protocol_version": "evidence-gated-v3",
+  "repository_commit": "afb1f84b022b3da01db2fc6f9d3686ea364db202",
+  "resume_permitted_for_current_row": false,
+  "selected_row_count": 20,
+  "status": "failed",
+  "timestamp_utc": "2026-08-04T22:58:34.965070+00:00",
+  "valid_model_response_count_for_current_row": 1,
+  "verified_existing_row_count": 0
+}

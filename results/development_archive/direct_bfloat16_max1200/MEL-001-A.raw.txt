@@ -1,0 +1,47 @@
+<unused94>thought
+The user wants me to extract facts from the provided image of a synthetic melanoma pathology report and return them in a specific JSON format.
+
+Here's the plan:
+1.  **Identify the required fields:** The JSON shape specifies the fields I need to extract: `document_id`, `specimen_site`, `laterality`, `diagnosis`, `breslow_thickness_mm`, `breslow_qualifier`, `ulceration`, `mitotic_rate_per_mm2`, `mitotic_qualifier`, `margins` (with four sub-fields: `invasive_peripheral`, `invasive_deep`, `in_situ_peripheral`, `in_situ_deep`), and `staging` (with four sub-fields: `pT`, `pN`, `pM`, `stage_group`).
+2.  **Extract information from the image:**
+    *   `document_id`: "MEL-000-A" (found near the top).
+    *   `specimen_site`: "Left upper back" (found under "Specimen site").
+    *   `laterality`: "left" (found under "Specimen site").
+    *   `diagnosis`: "Invasive melanoma, superficial spreading melanoma" (found under "Diagnosis").
+    *   `breslow_thickness_mm`: "0.6 mm" (found under "Breslow thickness").
+    *   `breslow_qualifier`: "exact" (implied by the value "0.6 mm").
+    *   `ulceration`: "Not identified" (found under "Ulceration").
+    *   `mitotic_rate_per_mm2`: "0 per mm2" (found under "Mitotic rate").
+    *   `mitotic_qualifier`: "exact" (implied by the value "0 per mm2").
+    *   `margins`:
+        *   `invasive_peripheral`: "Not involved" (found under "Invasive melanoma - peripheral margin").
+        *   `invasive_deep`: "Not involved" (found under "Invasive melanoma - deep margin").
+        *   `in_situ_peripheral`: "Involved" (found under "Melanoma in situ - peripheral margin").
+        *   `in_situ_deep`: "Not involved" (found under "Melanoma in situ - deep margin").
+    *   `staging`:
+        *   `pT`: "pT1a" (found under "Reported pt").
+        *   `pN`: null (not explicitly stated).
+        *   `pM`: null (not explicitly stated).
+        *   `stage_group`: null (not explicitly stated).
+3.  **Format the extracted information into the JSON structure:** Create a JSON object with the extracted values, ensuring all fields are present and correctly formatted according to the requirements. Use `null` for missing values.
+4.  **Review and validate:** Check the final JSON against the requirements:
+    *   Is it a single JSON object? Yes.
+    *   Are only facts from the current specimen used? Yes.
+    *   Are staging values calculated or inferred? No.
+    *   Are values copied exactly? Yes.
+    *   Are missing values represented by `null`? Yes.
+    *   Is the normalization correct (lowercase site, etc.)? Yes.
+    *   Is the staging format correct? Yes.
+
+**Self-Correction/Refinement:**
+*   Initially, I might have just put "0" for mitotic rate. However, the instructions state "A missing mitotic rate is not zero." So, I need to use "0 per mm2".
+*   The instructions specify "Use JSON null when a field is not stated for the current specimen." This is important for fields like `pN`, `pM`, and `stage_group`.
+*   The instructions also state "Do not calculate or infer staging." This means I should not try to determine the T, N, M, or stage group based on the provided information. I should only use the explicitly stated values.
+*   The instructions specify "Normalize: document_id: copy the exact synthetic report ID printed near the top of the image; do not reuse the illustrative ID in the JSON shape below". I will use "MEL-000-A".
+*   The instructions specify "Normalize: specimen_site: lowercase site without laterality (for example, 'upper back')". I will use "left upper back".
+*   The instructions specify "Normalize: laterality: 'left', 'right', 'midline', or null". I will use "left".
+*   The instructions specify "Normalize: diagnosis: 'invasive_melanoma', 'melanoma_in_situ', 'residual_melanoma_in_situ_no_invasive', or null". I will use "Invasive melanoma, superficial spreading melanoma".
+*   The instructions specify "Normalize: breslow_thickness_mm: reproduce an explicitly reported value as a string; otherwise null". I will use "0.6 mm".
+*   The instructions specify "Normalize: breslow_qualifier: 'exact', 'at_least', 'approximate', or null". I will use "exact".
+*   The instructions specify "Normalize: ulceration: 'present', 'not_identified', 'cannot_be_assessed', or null". I will use "Not identified".
+*   The instructions specify "Normalize: mitotic_rate_per_mm2: reproduce an explicitly reported value as a string; otherwise null". I will

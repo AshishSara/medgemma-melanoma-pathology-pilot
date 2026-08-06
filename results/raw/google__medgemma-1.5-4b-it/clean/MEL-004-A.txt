@@ -1,0 +1,18 @@
+{
+  "document_id": "MEL-004-A",
+  "specimen_site": "right shoulder",
+  "laterality": null,
+  "diagnosis": "Melanoma in situ, lentigo maligna type",
+  "breslow_thickness_mm": null,
+  "breslow_qualifier": null,
+  "ulceration": null,
+  "mitotic_rate_per_mm2": null,
+  "mitotic_qualifier": null,
+  "margins": {
+    "invasive_peripheral": "Involved",
+    "invasive_deep": "Not involved",
+    "in_situ_peripheral": "Involved",
+    "in_situ_deep": "Not involved"
+  },
+  "staging": null
+}

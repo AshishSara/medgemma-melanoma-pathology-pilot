@@ -10,11 +10,20 @@ from jsonschema import Draft202012Validator
 from PIL import Image
 from pilot_utils import (
     CONDITIONS,
+    DEVELOPMENT_CASE_IDS,
+    FORMAL_BASE_REPORT_COUNT,
+    FORMAL_DOCUMENT_CONDITION_COUNT,
+    FORMAL_OUTPUT_COUNT,
+    FORMAL_SEMANTIC_CASE_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     MODEL_IDS,
     PRIMARY_FIELD_PATHS,
+    PROTOCOL_VERSION,
     ROOT,
     TEMPLATE_IDS,
+    VALID_REVIEW_STATUSES,
     flatten_json,
+    formal_manifest_rows,
     read_json,
     sha256_file,
 )
@@ -132,13 +141,102 @@ def validate() -> Dict[str, Any]:
         if "None" not in truth_field_values[path]:
             errors.append(f"Expected at least one null ground truth for {path}")
 
+    formal_manifest = formal_manifest_rows(manifest)
+    formal_case_ids = {row["semantic_case_id"] for row in formal_manifest}
+    formal_document_ids = {row["document_id"] for row in formal_manifest}
+    if len(formal_case_ids) != FORMAL_SEMANTIC_CASE_COUNT:
+        errors.append(
+            f"Expected {FORMAL_SEMANTIC_CASE_COUNT} formal cases, found {len(formal_case_ids)}"
+        )
+    if formal_case_ids.intersection(DEVELOPMENT_CASE_IDS):
+        errors.append("Development cases leaked into the formal manifest subset")
+    if len(formal_document_ids) != FORMAL_BASE_REPORT_COUNT:
+        errors.append(
+            f"Expected {FORMAL_BASE_REPORT_COUNT} formal base reports, "
+            f"found {len(formal_document_ids)}"
+        )
+    if len(formal_manifest) != FORMAL_DOCUMENT_CONDITION_COUNT:
+        errors.append(
+            f"Expected {FORMAL_DOCUMENT_CONDITION_COUNT} formal document conditions, "
+            f"found {len(formal_manifest)}"
+        )
+
     pilot_rows = load_csv(ROOT / "results" / "pilot_table.csv")
     review_rows = load_csv(ROOT / "results" / "manual_review.csv")
-    intended = len(MODEL_IDS) * len(doc_conditions) * len(CONDITIONS)
-    if len(pilot_rows) != intended:
-        errors.append(f"Pilot table should have {intended} rows, found {len(pilot_rows)}")
-    if len(review_rows) != intended:
-        errors.append(f"Manual review ledger should have {intended} rows, found {len(review_rows)}")
+    intended = FORMAL_OUTPUT_COUNT
+    if len(pilot_rows) != FORMAL_OUTPUT_COUNT:
+        errors.append(
+            f"Pilot table should have {FORMAL_OUTPUT_COUNT} rows, found {len(pilot_rows)}"
+        )
+    if len(review_rows) != FORMAL_OUTPUT_COUNT:
+        errors.append(
+            f"Manual review ledger should have {FORMAL_OUTPUT_COUNT} rows, found {len(review_rows)}"
+        )
+
+    expected_keys = {
+        (model_id, row["document_id"], row["condition"])
+        for model_id in MODEL_IDS
+        for row in formal_manifest
+    }
+    for label, rows in (("pilot table", pilot_rows), ("manual review ledger", review_rows)):
+        keys = [(row["model_id"], row["document_id"], row["condition"]) for row in rows]
+        if len(keys) != len(set(keys)):
+            errors.append(f"{label} contains duplicate model/document/condition keys")
+        if set(keys) != expected_keys:
+            errors.append(f"{label} keys do not exactly match the formal evaluation matrix")
+        if any(row["semantic_case_id"] in DEVELOPMENT_CASE_IDS for row in rows):
+            errors.append(f"{label} contains a development case")
+
+    prompt_sha = sha256_file(ROOT / "prompts" / "extraction_prompt.txt")
+    schema_sha = sha256_file(ROOT / "schema" / "extraction.schema.json")
+    run_manifest = read_json(ROOT / "results" / "run_manifest.json")
+    metrics = read_json(ROOT / "results" / "metrics.json")
+    expected_manifest_values = {
+        "protocol_version": PROTOCOL_VERSION,
+        "formal_semantic_case_count": FORMAL_SEMANTIC_CASE_COUNT,
+        "formal_base_report_count": FORMAL_BASE_REPORT_COUNT,
+        "formal_document_condition_count": FORMAL_DOCUMENT_CONDITION_COUNT,
+        "intended_output_count": FORMAL_OUTPUT_COUNT,
+        "prompt_sha256": prompt_sha,
+        "schema_sha256": schema_sha,
+    }
+    for key, expected in expected_manifest_values.items():
+        if run_manifest.get(key) != expected:
+            errors.append(
+                f"Run manifest {key} should be {expected!r}, found {run_manifest.get(key)!r}"
+            )
+    if metrics.get("protocol_version") != PROTOCOL_VERSION:
+        errors.append("Metrics protocol version is stale")
+    if metrics.get("intended_output_count") != FORMAL_OUTPUT_COUNT:
+        errors.append("Metrics intended output count is stale")
+
+    completed_rows = [row for row in pilot_rows if row["run_status"] == "COMPLETED"]
+    if run_manifest.get("completed_output_count") != len(completed_rows):
+        errors.append("Run manifest completed count does not match the pilot table")
+    if metrics.get("completed_output_count") != len(completed_rows):
+        errors.append("Metrics completed count does not match the pilot table")
+    review_by_key = {
+        (row["model_id"], row["document_id"], row["condition"]): row for row in review_rows
+    }
+    for key, row in review_by_key.items():
+        if row["review_status"] not in VALID_REVIEW_STATUSES:
+            errors.append(f"Unknown review status {row['review_status']!r}: {key}")
+            continue
+        if row["review_status"] not in HASH_BOUND_REVIEW_STATUSES:
+            continue
+        model_id, document_id_value, condition = key
+        raw_path = (
+            ROOT
+            / "results"
+            / "raw"
+            / model_id.replace("/", "__")
+            / condition
+            / f"{document_id_value}.txt"
+        )
+        if not raw_path.exists():
+            errors.append(f"Hash-bound review lacks raw output: {key}")
+        elif row.get("raw_output_sha256") != sha256_file(raw_path):
+            errors.append(f"Hash-bound review hash does not match raw output: {key}")
 
     summary = {
         "valid": not errors,
@@ -146,6 +244,9 @@ def validate() -> Dict[str, Any]:
         "semantic_cases": len(case_templates),
         "base_reports": len(doc_conditions),
         "document_conditions": len(manifest),
+        "formal_semantic_cases": len(formal_case_ids),
+        "formal_base_reports": len(formal_document_ids),
+        "formal_document_conditions": len(formal_manifest),
         "intended_model_outputs": intended,
         "ground_truth_files": len(seen_truth),
     }
@@ -154,8 +255,8 @@ def validate() -> Dict[str, Any]:
             print(f"ERROR: {error}")
         raise SystemExit(1)
     print(
-        "Validated 8 semantic cases, 16 base reports, 32 document conditions, "
-        "16 ground-truth files, and a 64-output review ledger."
+        "Validated the 8-case/16-report corpus and the held-out "
+        "7-case/14-report/28-condition/56-output evaluation matrix."
     )
     return summary
 

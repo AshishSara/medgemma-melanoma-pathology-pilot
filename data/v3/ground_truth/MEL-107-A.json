@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": "exact",
+  "breslow_thickness_mm": 3.1,
+  "diagnosis": "invasive_melanoma",
+  "document_id": "MEL-107-A",
+  "laterality": "midline",
+  "margins": {
+    "in_situ_deep": "not_involved",
+    "in_situ_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "invasive_peripheral": "not_involved"
+  },
+  "mitotic_qualifier": "exact",
+  "mitotic_rate_per_mm2": 7.0,
+  "specimen_site": "mid back",
+  "staging": {
+    "pM": "pM not assigned",
+    "pN": "pN0",
+    "pT": "pT3b",
+    "stage_group": "Stage IIB"
+  },
+  "ulceration": "present"
+}

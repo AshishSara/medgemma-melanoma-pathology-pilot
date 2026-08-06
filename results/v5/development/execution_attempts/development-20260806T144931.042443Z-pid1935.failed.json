@@ -1,0 +1,16 @@
+{
+  "completed_new_row_count": 0,
+  "current_row": null,
+  "error_message": "You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/medgemma-1.5-4b-it.\n401 Client Error. (Request ID: Root=1-6a749f0b-1dc216c102057f3521a03213;86d501ae-6921-4586-b825-4b48c00fea9e)\n\nCannot access gated repo for url https://huggingface.co/google/medgemma-1.5-4b-it/resolve/91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b/config.json.\nAccess to model google/medgemma-1.5-4b-it is restricted. You must have access to it and be authenticated to access it. Please log in.",
+  "error_type": "OSError",
+  "event": "failed",
+  "execution_attempt_id": "development-20260806T144931.042443Z-pid1935",
+  "protocol_lock_path": "data/v5/protocol_lock.json",
+  "protocol_lock_sha256": "fc782dc075fe2739165f0350e7e46ecd11cb39b4f6c7bb3c5b4c8ade052ffe9a",
+  "protocol_source_commit": "3d25b8f60a9e3d37fe79195331f90866e2571654",
+  "protocol_version": "fresh-confirmatory-v5",
+  "repository_commit": "509a63fc051065b2c6db2e5ef57d574036f459e8",
+  "split": "development",
+  "timestamp_utc": "2026-08-06T14:49:47.340772+00:00",
+  "verified_existing_row_count": 0
+}

@@ -1,0 +1,12 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-205-A
+Procedure: Shave biopsy
+Specimen site: Right ear
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: At least 1.8 mm
+Ulceration: Cannot be assessed
+Mitotic rate: At least 1 per mm2
+Invasive melanoma - peripheral margin: Involved
+Invasive melanoma - deep margin: Involved
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The specimen is transected at the deep tissue edge and the epidermis is focally absent.

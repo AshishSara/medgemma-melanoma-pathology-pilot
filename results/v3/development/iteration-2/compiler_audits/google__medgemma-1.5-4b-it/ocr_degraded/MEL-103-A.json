@@ -1,0 +1,263 @@
+{
+  "accepted_non_null_count": 4,
+  "compiler_version": "v3-evidence-compiler-2",
+  "fields": {
+    "breslow_qualifier": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "breslow_thickness_mm": {
+      "accepted": false,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [
+        "L013"
+      ],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "diagnosis": {
+      "accepted": false,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": "residual_melanoma_in_situ_no_invasive",
+      "canonical_candidate": "residual_melanoma_in_situ_no_invasive",
+      "evidence_line_ids": [
+        "L008"
+      ],
+      "evidence_sections": [
+        "current"
+      ],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "evidence_missing_or_ambiguous"
+    },
+    "document_id": {
+      "accepted": true,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": "MEL-103-A",
+      "canonical_candidate": "MEL-103-A",
+      "evidence_line_ids": [
+        "L004"
+      ],
+      "evidence_sections": [
+        "header"
+      ],
+      "final_value": "MEL-103-A",
+      "normalization": null,
+      "parsed_evidence_values": [
+        "MEL-103-A"
+      ],
+      "reason": "accepted"
+    },
+    "laterality": {
+      "accepted": false,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [
+        "L007"
+      ],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "margins.in_situ_deep": {
+      "accepted": true,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": "not_involved",
+      "canonical_candidate": "not_involved",
+      "evidence_line_ids": [
+        "L011"
+      ],
+      "evidence_sections": [
+        "current"
+      ],
+      "final_value": "not_involved",
+      "normalization": null,
+      "parsed_evidence_values": [
+        "not_involved"
+      ],
+      "reason": "accepted"
+    },
+    "margins.in_situ_peripheral": {
+      "accepted": true,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": "not_involved",
+      "canonical_candidate": "not_involved",
+      "evidence_line_ids": [
+        "L010"
+      ],
+      "evidence_sections": [
+        "current"
+      ],
+      "final_value": "not_involved",
+      "normalization": null,
+      "parsed_evidence_values": [
+        "not_involved"
+      ],
+      "reason": "accepted"
+    },
+    "margins.invasive_deep": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": "not_involved",
+      "canonical_candidate": "not_involved",
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "audit_status_absent"
+    },
+    "margins.invasive_peripheral": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": "not_involved",
+      "canonical_candidate": "not_involved",
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "audit_status_absent"
+    },
+    "mitotic_qualifier": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "mitotic_rate_per_mm2": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "specimen_site": {
+      "accepted": true,
+      "audit_status": "present",
+      "candidate_omitted": false,
+      "candidate_value": "Right flank",
+      "canonical_candidate": "flank",
+      "evidence_line_ids": [
+        "L007"
+      ],
+      "evidence_sections": [
+        "current"
+      ],
+      "final_value": "flank",
+      "normalization": null,
+      "parsed_evidence_values": [
+        "flank"
+      ],
+      "reason": "accepted"
+    },
+    "staging.pM": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "staging.pN": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "staging.pT": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": "pT2a",
+      "canonical_candidate": "pT2a",
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "audit_status_absent"
+    },
+    "staging.stage_group": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    },
+    "ulceration": {
+      "accepted": false,
+      "audit_status": "absent",
+      "candidate_omitted": false,
+      "candidate_value": null,
+      "canonical_candidate": null,
+      "evidence_line_ids": [],
+      "evidence_sections": [],
+      "final_value": null,
+      "normalization": null,
+      "parsed_evidence_values": [],
+      "reason": "candidate_null_or_omitted"
+    }
+  },
+  "history_evidence_rejection_count": 0,
+  "rejected_non_null_count": 4,
+  "schema_errors": [],
+  "schema_valid": true
+}

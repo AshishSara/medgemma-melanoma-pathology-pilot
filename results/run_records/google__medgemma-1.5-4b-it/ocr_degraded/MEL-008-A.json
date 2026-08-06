@@ -1,0 +1,68 @@
+{
+  "assistant_prefix": "{",
+  "assistant_prefix_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
+  "backend": "transformers",
+  "condition": "ocr_degraded",
+  "device": "cuda:0",
+  "do_sample": false,
+  "document_id": "MEL-008-A",
+  "dtype": "torch.bfloat16",
+  "elapsed_seconds": 20.579916966000383,
+  "generated_continuation_bytes": 467,
+  "generated_continuation_path": "results/generated_continuations/google__medgemma-1.5-4b-it/ocr_degraded/MEL-008-A.txt",
+  "generated_continuation_sha256": "bd7e844f112250dae5ab03be68fe7d0241470c59f146a5ea15b149a3dc8389a6",
+  "image_path": "output/rendered/ocr_degraded/MEL-008-A.png",
+  "image_sha256": "16f7860ccf98b5b18b6cc26359c3efba366b4bb4b3f00e9cd4918314c39884c5",
+  "max_new_tokens": 1200,
+  "model_id": "google/medgemma-1.5-4b-it",
+  "normalized_output_path": "results/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-008-A.json",
+  "outer_fence_removed": false,
+  "parse_error": null,
+  "parse_valid": true,
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "prompt_sha256": "139bc7f1dc858af0a5a2643f38b396f71c40e39e1419c14a281dd78f03ee801b",
+  "protocol_version": "heldout-pilot-v2",
+  "python_version": "3.12.13",
+  "raw_output_bytes": 468,
+  "raw_output_path": "results/raw/google__medgemma-1.5-4b-it/ocr_degraded/MEL-008-A.txt",
+  "raw_output_sha256": "857f51c281bec702763cd58030a13ddeb0bd488b08bfd6e69eb40a045293870a",
+  "repository_commit": "32f1453e2acbc79dbe50c7f80d9f42a519fdba8f",
+  "requested_dtype": "bfloat16",
+  "requested_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "resolved_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "response_mode": "json-prefill",
+  "run_timestamp_utc": "2026-08-04T18:12:55.763592+00:00",
+  "schema_errors": [
+    {
+      "message": "'melanoma in situ' is not one of ['invasive_melanoma', 'melanoma_in_situ', 'residual_melanoma_in_situ_no_invasive', None]",
+      "path": "diagnosis"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.in_situ_deep"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.in_situ_peripheral"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.invasive_deep"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.invasive_peripheral"
+    },
+    {
+      "message": "None is not of type 'object'",
+      "path": "staging"
+    }
+  ],
+  "schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "schema_valid": false,
+  "scope": "formal",
+  "semantic_case_id": "MEL-008",
+  "template_id": "A",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "4.57.6"
+}

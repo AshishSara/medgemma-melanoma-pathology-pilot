@@ -1,0 +1,15 @@
+{
+  "assigned_input_count": 4,
+  "development_gate": null,
+  "event": "started",
+  "execution_attempt_id": "development-20260806T144931.042443Z-pid1935",
+  "manifest_path": "data/v5/report_manifest.csv",
+  "manifest_sha256": "284ed5c79d7b1f9acbdde340c391292802e1e7a0e721f72243f9192abc80e709",
+  "protocol_lock_path": "data/v5/protocol_lock.json",
+  "protocol_lock_sha256": "fc782dc075fe2739165f0350e7e46ecd11cb39b4f6c7bb3c5b4c8ade052ffe9a",
+  "protocol_source_commit": "3d25b8f60a9e3d37fe79195331f90866e2571654",
+  "protocol_version": "fresh-confirmatory-v5",
+  "repository_commit": "509a63fc051065b2c6db2e5ef57d574036f459e8",
+  "split": "development",
+  "timestamp_utc": "2026-08-06T14:49:31.043240+00:00"
+}

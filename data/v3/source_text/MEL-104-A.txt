@@ -1,0 +1,15 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-104-A
+Procedure: Excision
+Specimen site: Right temple
+Diagnosis: Invasive melanoma, lentigo maligna melanoma
+Breslow thickness: Approximately 0.7 mm
+Ulceration: Not identified
+Mitotic rate: 1 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT1a
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+The in-situ component extends to one peripheral inked edge.

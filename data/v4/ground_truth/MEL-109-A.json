@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": "approximate",
+  "breslow_thickness_mm": 1.2,
+  "diagnosis": "invasive_melanoma",
+  "document_id": "MEL-109-A",
+  "laterality": "right",
+  "margins": {
+    "in_situ_deep": "cannot_be_assessed",
+    "in_situ_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "invasive_peripheral": "involved"
+  },
+  "mitotic_qualifier": "exact",
+  "mitotic_rate_per_mm2": 2.0,
+  "specimen_site": "posterior upper arm",
+  "staging": {
+    "pM": null,
+    "pN": null,
+    "pT": "pT2a",
+    "stage_group": null
+  },
+  "ulceration": "not_identified"
+}

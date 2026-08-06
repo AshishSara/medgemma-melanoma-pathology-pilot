@@ -1,0 +1,59 @@
+Independently audit which management-critical fields are explicitly present in the CURRENT
+SPECIMEN of this synthetic melanoma pathology report.
+
+Use only the report image and numbered OCR transcript below. You have not been given an
+extraction candidate. Do not guess what another pass may have produced.
+
+This is a field-by-field checklist, not a summary. Evaluate every schema field independently,
+including artifact-binding and normalized subfields.
+
+- A legible `Document ID` statement makes `document_id` present.
+- A laterality word embedded in a specimen-site phrase makes both `specimen_site` and
+  `laterality` present. Both fields may cite the same OCR line.
+- A numeric measurement statement makes both its numeric field and normalized qualifier
+  present. Both fields may cite the same OCR line. An unmodified number supports `exact`
+  even though the word "exact" is absent.
+- Evidence line IDs may be reused across fields when one line explicitly supports multiple
+  fields.
+- Before returning, verify that every `present` field has one or two evidence line IDs and
+  every `absent` field has none.
+
+For every requested field:
+- status "present": the current-specimen report explicitly supports the field. Select the
+  smallest one or two OCR line IDs that provide that support.
+- status "absent": the current-specimen report does not explicitly state the field. Return no
+  evidence line IDs.
+- status "unclear": OCR damage, conflicting text, or genuine ambiguity prevents a reliable
+  presence decision. Select relevant OCR line IDs when available.
+
+Do not treat a prior biopsy, history, comparison, or earlier-specimen value as current evidence.
+Do not calculate or infer staging. A comment that merely discusses a missing or earlier value is
+not evidence that the current value is present.
+
+For the Breslow and mitotic qualifier fields, an unmodified numeric statement explicitly
+supports an exact qualifier. "At least," "minimum," or equivalent wording explicitly supports a
+lower-bound qualifier. "Approximately," "about," or equivalent wording explicitly supports an
+approximate Breslow qualifier. If the corresponding numeric measurement is absent, mark its
+qualifier absent too.
+
+Return exactly one JSON object matching the required audit schema. Do not report extracted
+values, explanations, or Markdown.
+
+Numbered OCR transcript:
+[L001] [header] ae
+[L002] [header] SYNTHETIC MELANOMA PATHOLOGY REPORT
+[L003] [header] RESEARCH FIXTURE - NOT A REAL PATIENT - NOT FOR CLINICAL USE
+[L004] [header] Document ID: MEL-101-B Report date: 2026-08-11
+[L005] [header] FINAL DIAGNOSIS - CURRENT SPECIMEN
+[L006] [current] Right lower leg, Excisional biopsy:
+[L007] [current] Invasive melanoma, superficial spreading melanoma.
+[L008] [current] MICROSCOPIC SUMMARY
+[L009] [current] Breslow thickness is 0.9 mm.
+[L010] [current] Ulceration: not identified.
+[L011] [current] Mitotic rate is 1 per mm2.
+[L012] [current] invasive melanoma peripheral margin: not involved; invasive melanoma deep margin: not involved; melanoma in situ
+[L013] [current] peripheral margin: not involved; melanoma in situ deep margin: not involved.
+[L014] [current] Reported pathologic classification - pT: pT1b.
+[L015] [footer] COMMENT
+[L016] [footer] Tumor-infiltrating lymphocytes are present and nonbrisk.
+[L017] [footer] MEL-101-B | deterministic synthetic benchmark artifact Page 1 of 1
