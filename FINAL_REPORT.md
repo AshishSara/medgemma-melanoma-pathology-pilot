@@ -1,127 +1,167 @@
-# Final project report
+# Final archival project report
 
-Date: 2026-08-05
+Date: 2026-08-06
 
 ## Bottom line
 
-The reproducible repository is public, but the current MedGemma v4 technical
-gate is **incomplete and did not pass**.
+The reproducible repository, frozen v5 protocol, synthetic corpus, and incomplete execution
+evidence are public. The project is now paused.
 
-The model-access and infrastructure preflight succeeded: the exact pinned
-MedGemma 1.5 revision loaded on a Kaggle Tesla T4 in BF16, OCR worked, and two
-small non-corpus serializer-configuration checks returned JSON valid against
-their smoke schemas. The sole four-input development runner was then launched,
-but the Kaggle session remained in `Error` through the final observation
-window. No report-level v4 output or metric was observed or recovered, and the
-20-input formal evaluation was not run.
+There is **no successful confirmatory pilot result**. V5 ended before model inference because the
+Colab `HF_TOKEN` received HTTP 401 while accessing the gated MedGemma repository. No model call,
+semantic output, or completed qualification row occurred. The evaluator recorded
+`DEVELOPMENT_INCOMPLETE`, `provenance_valid_count: 0`, and `ground_truth_read: false`.
 
-This means there is no positive v4 extraction result to report. A
-success-oriented email should not be sent.
+The result is terminal incomplete and unscored—not evidence of either good or poor model
+extraction quality. Formal v5 inference was not run. No success-oriented email should be sent.
 
 ## What was completed
 
-1. A wholly synthetic melanoma-pathology extraction project was created in a
-   dedicated Obsidian project folder and Git repository.
-2. Deterministic report generators, JSON ground truth, prompts, schemas,
-   evaluators, provenance checks, and regression tests were implemented.
-3. Clean and degraded paired report inputs were generated across two report
-   templates.
-4. Historical v2 inference completed for 56 held-out outputs. It produced a
-   complete negative quality result: 56/56 outputs parsed as JSON, but 0/56
-   conformed to the frozen clinical schema.
-5. V3 introduced schema-constrained two-pass extraction. Its formal attempt
-   stopped after 3 of 20 inputs when an audit response reached the frozen
-   768-token cap before completing valid JSON.
-6. V4 prespecified a serialization-only recovery without changing the
-   clinical task, model revision, prompts, schemas, compiler, fields, or pass
-   thresholds.
-7. The v4 source and corpus passed local and Kaggle validation. All 122 tests,
-   Ruff lint, Ruff formatting, and `git diff --check` passed.
-8. The exact model revision
-   `91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b` loaded on `cuda:0` in
-   `torch.bfloat16`, with no CPU or disk model placement.
-9. Tesseract read a non-corpus preflight image. Two small serializer smokes
-   confirmed the frozen pass-specific configuration, but did not exercise a
-   clinical schema or report.
-10. The v4 development runner was launched once. The hosted session then
-    entered a persistent error state. No report output, metric, remote claim
-    artifact, or planned evidence archive was observed or recovered afterward.
-11. The incident, limitations, gate status, reproducible source, synthetic
-    corpus, and transparent outreach draft were published on GitHub.
+1. A wholly synthetic melanoma-pathology extraction project was created in a dedicated Obsidian
+   project folder and public Git repository.
+2. Deterministic report generators, JSON ground truth, prompts, schemas, evaluators, provenance
+   checks, append-only event ledgers, and regression tests were implemented.
+3. Clean and degraded paired report inputs were generated across two known report templates.
+4. Historical v2 inference completed for 56 held-out outputs. It produced a complete negative
+   quality result: 56/56 outputs parsed as JSON, but 0/56 conformed to the frozen clinical schema.
+5. V3 introduced schema-constrained two-pass extraction. Its tuned development result was
+   encouraging, but formal execution stopped after 3 of 20 inputs when an audit response reached
+   its frozen token cap.
+6. V4 prespecified a serialization-only recovery. Its hosted GPU session failed after the
+   development runner launch, before a recoverable clinical output.
+7. V5 was designed as a fresh, narrower confirmatory protocol with six fresh semantic vectors,
+   two known layouts, paired clean/OCR-degraded inputs, a four-input qualification, and a
+   twenty-input formal set.
+8. V5 underwent multiple prospective reviews. A pre-lock semantic collision was detected,
+   corrected, regenerated, and disclosed before inference.
+9. The v5 prospective source commit and pre-inference lock were published. The final verifier
+   binds every locked artifact to the prospective source commit, execution HEAD, and working
+   bytes.
+10. All 175 repository tests, Ruff lint, Ruff formatting, and `git diff --check` passed before
+    execution.
+11. The exact Colab T4 runtime profile was captured and frozen.
+12. The v5 qualification launch and its HTTP 401 evidence were preserved, evaluated as
+    incomplete without reading ground truth, archived, and documented.
+13. No email or HAI-DEF submission was sent.
 
-## V4 corpus denominator
+## V5 design and denominator
 
-V4 contains 6 semantic cases rendered as 12 report-layout documents across two
-templates. Clean and degraded versions produce 24 rendered inputs forming 12
-pairs:
+V5 contains six independent synthetic clinical fact vectors:
 
-- 4 development inputs
-- 20 execution-held-out inputs
+- qualification-only: `MEL-190`
+- formal-only: `MEL-201` through `MEL-205`
 
-The report-construction gate is therefore complete and deterministic. The
-overall technical gate is not complete because clinical JSON generation did
-not complete.
+Each vector was rendered in layouts A and B and in clean and OCR-degraded form:
 
-## Why no retry was performed
+- qualification: 4 rendered inputs
+- formal: 20 rendered inputs
+- complete corpus: 24 rendered inputs
 
-V4 permits one documented development iteration. The runner is designed to
-atomically create its exclusive `.claimed.json` artifact before model backend
-construction. That remote artifact could not be recovered after the platform
-failure.
+The 20 formal inputs represent five independent fact vectors, not twenty independent cases.
 
-The protocol does not separately prescribe how to classify a pre-output
-development infrastructure loss when the remote claim artifact is
-unrecoverable. The project therefore makes the conservative decision to treat
-the observed launch as consuming the single development iteration. No retry
-was attempted, and no further recovery protocol was created.
+The frozen qualification thresholds were:
 
-This is a protocol-conservatism decision, not proof of the exact Kaggle failure
-mechanism.
+- 4/4 complete and provenance-valid;
+- 4/4 strict candidate and audit JSON;
+- 4/4 canonical final JSON;
+- no generation cap hits;
+- at least 58/64 exact fields overall;
+- at least 28/32 exact fields per condition;
+- at least 45/52 non-null fields recalled;
+- 0/12 unsupported values;
+- 100% valid evidence for accepted non-null values; and
+- zero history carryover.
+
+None of these semantic criteria was evaluated because no model output existed.
+
+## V5 execution outcome
+
+| Item | Observed result |
+|---|---|
+| Source commit | `3d25b8f60a9e3d37fe79195331f90866e2571654` |
+| Lock commit | `509a63fc051065b2c6db2e5ef57d574036f459e8` |
+| Lock SHA-256 | `fc782dc075fe2739165f0350e7e46ecd11cb39b4f6c7bb3c5b4c8ade052ffe9a` |
+| Model revision requested | `91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b` |
+| Backend access result | HTTP 401 from gated Hugging Face repository |
+| Completed qualification rows | 0/4 |
+| Candidate/audit model calls | 0 |
+| Persisted model responses | 0 |
+| Ground truth read | `false` |
+| Evaluator status | `DEVELOPMENT_INCOMPLETE` |
+| Evidence ZIP SHA-256 | `e2db5ae5dbe9c6799d67091d1fe7dcbf4bce5b050c563b19fd7b22a1b49494e4` |
+
+The exact cause within Hugging Face authentication is not proven. Plausible explanations include
+an invalid or expired token, a token belonging to a different account, or insufficient gated-repo
+scope. The evidence establishes only the 401 response.
+
+## Protocol/runner discrepancy
+
+The v5 protocol says backend access/runtime matching must complete before an execution attempt is
+claimed. The locked runner writes the execution-attempt `started` event before constructing the
+backend. Consequently, the evidence contains a started/failed execution attempt even though the
+model never loaded.
+
+The record is preserved rather than erased. Any future v6 should fix this ordering before lock
+and add a regression test for gated-access failure.
+
+## Complete outcome history
+
+| Protocol | Scope reached | Outcome |
+|---|---|---|
+| v2 | 56 held-out outputs | Complete negative extraction-quality result |
+| v3 | Tuned development plus 3/20 formal inputs | Terminal incomplete serialization attempt |
+| v4 | Runtime/model preflight and development launch | Terminal incomplete hosted-runtime attempt |
+| v5 | Qualification backend-access stage; 0/4 inputs | Terminal incomplete gated-access attempt |
+
+These outcomes are not interchangeable. V3's development result is not a confirmatory formal
+result. V4 and v5 have no extraction-quality metric.
 
 ## What cannot be claimed
 
-- V4 development did not pass.
-- V4 formal inference was not run.
-- No v4 extraction accuracy, schema-validity, unsupported-field, or robustness
-  metric exists.
-- The small serializer smokes were not clinical extraction tests.
-- The number of report-level model-generation calls cannot be established from
-  the recovered evidence.
-- Human report review was not started for v4.
-- A dermatopathologist has not reviewed the schema or ambiguous cases.
+- No confirmatory protocol passed.
+- V5 did not produce valid or invalid clinical JSON; it produced no clinical response.
+- V5 has no accuracy, recall, unsupported-field, or robustness score.
+- V5 formal inference was not run.
+- Human report review was not performed for v5.
+- A dermatopathologist has not approved the schema or reviewed ambiguous cases.
 - The HAI-DEF use-case form has not been submitted.
 - No email has been sent to Daniel Golden.
 
-## Outreach recommendation
+## Outreach decision
 
-The best official next step is to submit the use case through HAI-DEF and use a
-developer forum or GitHub question for the reproducible runtime/document
-extraction issue.
+The project owner chose to stop rather than invest additional time in authentication recovery and
+GPU execution. This is a reasonable stopping point.
 
-If you prefer to spend no more time unless Google responds, it is reasonable
-to send one short, transparent feasibility email to Daniel Golden alone. It
-must say that there is no positive pilot result, distinguish the v2, v3, and
-v4 outcomes, and ask whether the narrow use case is useful before expanding to
-75–100 reports.
+Do not send a success-oriented email. The previous transparent fallback draft is retained only as
+historical planning material and is marked on hold. If the project later restarts, it should
+produce a new v6 result and a fresh outreach decision.
 
-The reviewed fallback email is in
-[`docs/outreach_email.md`](docs/outreach_email.md). Do not use the original
-success-oriented subject or describe the technical gate as passed.
+## Future restart
 
-## Published artifacts
+Use [`docs/restart_handoff.md`](docs/restart_handoff.md). The recommended path is:
+
+1. verify gated access with a non-inference download before claiming an attempt;
+2. create a prospectively reviewed v6 namespace;
+3. correct the attempt/backend ordering;
+4. publish source and lock before report inference;
+5. run and publish a small qualification;
+6. proceed to formal inference only after qualification passes; and
+7. complete blinded human review before success-oriented outreach.
+
+## Published evidence and handoff
 
 - [Public repository branch](https://github.com/AshishSara/medgemma-melanoma-pathology-pilot/tree/agent/v3-constrained-pipeline)
 - [Draft pull request #2](https://github.com/AshishSara/medgemma-melanoma-pathology-pilot/pull/2)
-- [`docs/v4_development_incident.md`](docs/v4_development_incident.md)
+- [`docs/v5_access_incident.md`](docs/v5_access_incident.md)
 - [`docs/gate_status.md`](docs/gate_status.md)
+- [`docs/restart_handoff.md`](docs/restart_handoff.md)
 - [`docs/outreach_email.md`](docs/outreach_email.md)
-
-For the preceding incident-publication commit, GitHub tree
-`7bed3cb5ed1922acae834dc3daa1b35823b1d8f6` matched the locally tested tree
-exactly, and its draft-pull-request CI completed successfully.
+- `results/v5/development/`
+- `results/bundles/v5-development-incomplete-509a63fc0510.zip`
 
 ## Tooling note
 
-Claude Code and Qwen command-line tools were not available in this workspace.
-Independent factual review was instead performed by separate reviewer agents
-before publication.
+Claude Code and Qwen command-line tools were not installed in this workspace. Claude web was used
+for prospective v5 protocol review before lock; it did not inspect or alter held-out outputs.
+Independent reviewer agents also audited the frozen implementation. Neither substitutes for the
+human clinical review that would have been required after a formal run.

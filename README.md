@@ -4,34 +4,34 @@ This repository is a deterministic technical gate for testing whether MedGemma
 can extract management-critical melanoma fields from heterogeneous synthetic
 pathology-report images without inventing unstated values.
 
-> Current status (2026-08-05): **the v4 automated technical gate is
-> incomplete and did not pass.** The exact MedGemma 1.5 revision loaded on a
-> Kaggle Tesla T4 in BF16, Tesseract succeeded, and two small non-corpus
-> serializer-configuration smokes passed. The sole four-input development
-> runner was then launched, but the Kaggle session remained in `Error` through
-> the final observation window before any report-level output or metrics were
-> observed or recovered. Under the prespecified single-development-iteration
-> budget and the runner's claim-before-backend design, this incident is
-> conservatively treated as consuming v4; no retry was attempted. Formal v4
-> inference was not run, v4 human review was not started, historical v2 human
-> verification remains pending, and individual outreach remains on hold.
+> Current status (2026-08-06): **the project is paused and v5 is terminal
+> incomplete and unscored.** A frozen four-input v5 qualification was launched
+> from the public lock commit in an exact Colab Tesla T4 runtime. Backend
+> construction received HTTP 401 while requesting the gated MedGemma
+> configuration. No model call, semantic output, or completed row occurred;
+> the evaluator recorded `DEVELOPMENT_INCOMPLETE` with
+> `ground_truth_read: false`. The project owner elected to stop rather than
+> repair authentication and resume. Formal v5 inference was not run, human
+> review was not started, HAI-DEF was not submitted, and no email was sent.
 
-The repository preserves three distinct, non-interchangeable outcomes:
+The repository preserves four distinct, non-interchangeable outcomes:
 
 | Protocol | Scope reached | Outcome |
 |---|---|---|
 | v2 | 56 held-out model outputs | Complete negative quality result: 56/56 parse-valid, 0/56 schema-valid |
 | v3 | 3 of 20 formal inputs | Terminal incomplete serialization attempt |
 | v4 | Infrastructure/model preflight; development runner launch | Terminal incomplete infrastructure attempt; no v4 extraction metric |
+| v5 | Qualification execution preflight; 0 of 4 assigned inputs | Terminal incomplete gated-access incident; no model call or extraction metric |
 
-See [`docs/v4_development_incident.md`](docs/v4_development_incident.md) for
-the current incident record and [`docs/outreach_email.md`](docs/outreach_email.md)
-for the outreach decision and transparent fallback draft.
+See [`docs/v5_access_incident.md`](docs/v5_access_incident.md) for the current
+incident record, [`docs/restart_handoff.md`](docs/restart_handoff.md) for the
+future restart boundary, and [`docs/outreach_email.md`](docs/outreach_email.md)
+for the outreach hold.
 
 For a plain-language account of the complete project, evidence, outcome, and
 recommended next step, see [`FINAL_REPORT.md`](FINAL_REPORT.md).
 
-## V3 and v4 constrained follow-ups
+## V3–v5 constrained follow-ups
 
 V3 introduced two blind, schema-constrained MedGemma 1.5 calls and a
 deterministic evidence compiler. Its formal attempt stopped after three of
@@ -45,18 +45,30 @@ unchanged, while the blind-audit cap and effective serializer configuration
 were corrected. Its four-input development gate did not complete because the
 hosted GPU session failed after runner launch. The project conservatively
 treats that launch as consuming the sole development iteration, and the
-protocol permits no further recovery version. No v4 formal lock or formal
-result exists.
+protocol permits no further v4 recovery. No v4 formal lock or formal result
+exists.
 
-The v3/v4 corpora can be regenerated and checked without model access:
+V5 was a separately frozen fresh confirmatory protocol with one four-input
+qualification vector and five formal vectors. Its source and pre-inference
+lock were published before execution. The exact qualification runtime and
+tests passed, but the runner stopped during gated-repository authentication
+before loading the model. The preserved evidence contains a started/failed
+execution attempt, zero call events, zero outputs, and an incomplete evaluator
+payload that did not read ground truth. V5 is closed without a score; any
+future restart should use a prospectively reviewed v6 namespace.
+
+The v3–v5 corpora can be regenerated and checked without model access:
 
 ```bash
 uv run python scripts/generate_v3_reports.py
 uv run python scripts/generate_v4_reports.py
+uv run python scripts/generate_v5_reports.py
 uv run pytest tests/test_v3_corpus.py tests/test_v3_pipeline.py \
   tests/test_v3_inference.py tests/test_v4_corpus.py \
   tests/test_v4_inference_regression.py \
-  tests/test_v4_evaluator_regression.py tests/test_v4_protocol.py
+  tests/test_v4_evaluator_regression.py tests/test_v4_protocol.py \
+  tests/test_v5_corpus.py tests/test_v5_inference.py \
+  tests/test_v5_evaluator.py tests/test_v5_protocol.py
 ```
 
 ## Research question
@@ -222,12 +234,10 @@ protocol.
 ## Gate status
 
 See [`docs/gate_status.md`](docs/gate_status.md). Publication is a
-reproducibility artifact, not evidence that the current technical gate passed.
-The original v2 pilot completed with a negative extraction-quality result; v3
-and v4 are terminal incomplete attempts with no replacement formal metric.
-The intended sequence is: submit the measured use case through HAI-DEF, route
-a reproducible technical question through the developer forum or GitHub, and
-only then decide whether individual research outreach is warranted.
+reproducibility artifact, not evidence that the technical gate passed. The
+original v2 pilot completed with a negative extraction-quality result; v3,
+v4, and v5 are terminal incomplete attempts with no replacement formal
+metric. The project is paused. No success-oriented outreach is warranted.
 
 ## Safety and scope
 

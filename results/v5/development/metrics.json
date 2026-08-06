@@ -1,0 +1,124 @@
+{
+  "artifact_issues": [
+    {
+      "condition": "clean",
+      "document_id": "MEL-190-A",
+      "errors": [
+        "missing or unsafe results/v5/development/ocr/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/rendered_prompts/candidate/clean/MEL-190-A.txt",
+        "missing or unsafe results/v5/development/rendered_prompts/audit/clean/MEL-190-A.txt",
+        "missing or unsafe results/v5/development/response_bundles/candidate/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/response_bundles/audit/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/normalized/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "missing or unsafe results/v5/development/run_records/google__medgemma-1.5-4b-it/clean/MEL-190-A.json",
+        "event ledger: development call_events ledger is missing or unsafe",
+        "event ledger: development has 0 response-persisted events; expected 8",
+        "event ledger: call-event ledger keys do not exactly match the assigned split",
+        "event ledger: call-event chain is missing for ('audit', 'clean', 'MEL-190-A')",
+        "event ledger: call-event chain is missing for ('audit', 'clean', 'MEL-190-B')",
+        "event ledger: call-event chain is missing for ('audit', 'ocr_degraded', 'MEL-190-A')",
+        "event ledger: call-event chain is missing for ('audit', 'ocr_degraded', 'MEL-190-B')",
+        "event ledger: call-event chain is missing for ('candidate', 'clean', 'MEL-190-A')",
+        "event ledger: call-event chain is missing for ('candidate', 'clean', 'MEL-190-B')",
+        "event ledger: call-event chain is missing for ('candidate', 'ocr_degraded', 'MEL-190-A')",
+        "event ledger: call-event chain is missing for ('candidate', 'ocr_degraded', 'MEL-190-B')",
+        "event ledger: development run records have no execution attempt"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-190-A",
+      "errors": [
+        "missing or unsafe results/v5/development/ocr/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/rendered_prompts/candidate/ocr_degraded/MEL-190-A.txt",
+        "missing or unsafe results/v5/development/rendered_prompts/audit/ocr_degraded/MEL-190-A.txt",
+        "missing or unsafe results/v5/development/response_bundles/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/response_bundles/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json",
+        "missing or unsafe results/v5/development/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-A.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-190-B",
+      "errors": [
+        "missing or unsafe results/v5/development/ocr/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/rendered_prompts/candidate/clean/MEL-190-B.txt",
+        "missing or unsafe results/v5/development/rendered_prompts/audit/clean/MEL-190-B.txt",
+        "missing or unsafe results/v5/development/response_bundles/candidate/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/response_bundles/audit/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/normalized/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-190-B.json",
+        "missing or unsafe results/v5/development/run_records/google__medgemma-1.5-4b-it/clean/MEL-190-B.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-190-B",
+      "errors": [
+        "missing or unsafe results/v5/development/ocr/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/rendered_prompts/candidate/ocr_degraded/MEL-190-B.txt",
+        "missing or unsafe results/v5/development/rendered_prompts/audit/ocr_degraded/MEL-190-B.txt",
+        "missing or unsafe results/v5/development/response_bundles/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/response_bundles/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json",
+        "missing or unsafe results/v5/development/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-190-B.json"
+      ]
+    }
+  ],
+  "automated_gate_pass": false,
+  "field_exact_total_denominator": 64,
+  "gate_criteria": {
+    "accepted_non_null_evidence_100_percent": false,
+    "audit_strict_schema_valid": false,
+    "candidate_strict_schema_valid": false,
+    "canonical_schema_valid": false,
+    "complete_and_provenance_valid": false,
+    "each_condition_field_exact_minimum": false,
+    "nonnull_recall_minimum": false,
+    "pooled_field_exact_minimum": false,
+    "unsupported_maximum": false,
+    "zero_audit_cap_hits": false,
+    "zero_candidate_cap_hits": false,
+    "zero_history_carryover": false
+  },
+  "gate_thresholds": {
+    "accepted_non_null_evidence_rate_minimum": 1.0,
+    "assigned_input_count": 4,
+    "audit_cap_hits_maximum": 0,
+    "candidate_cap_hits_maximum": 0,
+    "condition_field_opportunities": 32,
+    "field_opportunities": 64,
+    "ground_truth_non_null_opportunities": 52,
+    "ground_truth_null_opportunities": 12,
+    "history_carryover_maximum": 0,
+    "non_null_recall_minimum": 45,
+    "per_condition_exact_minimum": 28,
+    "pooled_exact_minimum": 58,
+    "unsupported_maximum": 0
+  },
+  "generated_at_utc": "2026-08-06T14:49:52.039865+00:00",
+  "ground_truth_read": false,
+  "human_review_complete": null,
+  "intended_output_count": 4,
+  "nonnull_total_denominator": 52,
+  "null_total_denominator": 12,
+  "output_count": 4,
+  "outreach_ready": false,
+  "pass": false,
+  "protocol_version": "fresh-confirmatory-v5",
+  "provenance_valid_count": 0,
+  "split": "development",
+  "status": "DEVELOPMENT_INCOMPLETE"
+}
