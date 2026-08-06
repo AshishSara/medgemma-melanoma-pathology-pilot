@@ -28,6 +28,9 @@ See [`docs/v4_development_incident.md`](docs/v4_development_incident.md) for
 the current incident record and [`docs/outreach_email.md`](docs/outreach_email.md)
 for the outreach decision and transparent fallback draft.
 
+For a plain-language account of the complete project, evidence, outcome, and
+recommended next step, see [`FINAL_REPORT.md`](FINAL_REPORT.md).
+
 ## V3 and v4 constrained follow-ups
 
 V3 introduced two blind, schema-constrained MedGemma 1.5 calls and a
