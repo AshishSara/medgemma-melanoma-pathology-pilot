@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import copy
+import json
 import sys
 from pathlib import Path
 
@@ -10,12 +12,18 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from output_parser import deterministic_unfence, parse_and_validate  # noqa: E402
 from pilot_utils import (  # noqa: E402
+    FORMAL_DOCUMENT_CONDITION_COUNT,
+    FORMAL_OUTPUT_COUNT,
+    HASH_BOUND_REVIEW_STATUSES,
     PRIMARY_FIELD_PATHS,
+    REVIEW_STATUS_AI_AUDITED,
+    REVIEW_STATUS_HUMAN_VERIFIED,
     compare_prediction,
     ground_truth_from_case,
     load_cases,
     read_json,
 )
+from run_inference import extract_assistant_text, manifest_rows, output_paths  # noqa: E402
 
 
 def test_case_matrix_is_eight_semantic_cases_by_two_templates() -> None:
@@ -71,7 +79,7 @@ def test_only_one_outer_markdown_fence_is_removed() -> None:
 def test_schema_rejects_extra_properties() -> None:
     truth = ground_truth_from_case(load_cases()[0], "A")
     truth["invented"] = "not allowed"
-    parsed, metadata = parse_and_validate(__import__("json").dumps(truth))
+    parsed, metadata = parse_and_validate(json.dumps(truth))
     assert parsed is not None
     assert metadata["parse_valid"] is True
     assert metadata["schema_valid"] is False
@@ -101,3 +109,84 @@ def test_schema_requires_numeric_qualifier_pairs() -> None:
         "mitotic_qualifier": "exact",
     }
     assert list(validator.iter_errors(missing_mitotic_value))
+
+
+def test_formal_matrix_excludes_entire_development_case() -> None:
+    formal = manifest_rows("all", "formal")
+    development = manifest_rows("all", "development")
+    assert len(formal) == FORMAL_DOCUMENT_CONDITION_COUNT
+    assert len(formal) * 2 == FORMAL_OUTPUT_COUNT
+    assert {row["semantic_case_id"] for row in development} == {"MEL-001"}
+    assert len(development) == 4
+    assert all(row["semantic_case_id"] != "MEL-001" for row in formal)
+
+
+def test_ai_audit_does_not_satisfy_human_review_gate() -> None:
+    assert REVIEW_STATUS_AI_AUDITED in HASH_BOUND_REVIEW_STATUSES
+    assert REVIEW_STATUS_HUMAN_VERIFIED in HASH_BOUND_REVIEW_STATUSES
+    assert REVIEW_STATUS_AI_AUDITED != REVIEW_STATUS_HUMAN_VERIFIED
+
+
+def test_development_outputs_are_routed_outside_formal_results() -> None:
+    formal = output_paths("google/medgemma-1.5-4b-it", "clean", "MEL-002-A")
+    development = output_paths(
+        "google/medgemma-1.5-4b-it",
+        "clean",
+        "MEL-001-A",
+        scope="development",
+    )
+    assert "results/raw/" in formal["raw"].as_posix()
+    assert "results/development/raw/" in development["raw"].as_posix()
+
+
+def test_generated_assistant_text_supports_string_and_typed_content() -> None:
+    assert extract_assistant_text([{"role": "assistant", "content": '{"a": 1}'}]) == '{"a": 1}'
+    assert (
+        extract_assistant_text(
+            [
+                {
+                    "role": "assistant",
+                    "content": [
+                        {"type": "text", "text": "{"},
+                        {"type": "text", "text": '"a": 1}'},
+                    ],
+                }
+            ]
+        )
+        == '{"a": 1}'
+    )
+
+
+def test_missing_key_does_not_score_as_explicit_null() -> None:
+    truth = ground_truth_from_case(load_cases()[-1], "A")
+    prediction = copy.deepcopy(truth)
+    del prediction["staging"]["pN"]
+    metrics = compare_prediction(truth, prediction)
+    assert metrics["field_exact_correct"] == len(PRIMARY_FIELD_PATHS) - 1
+    assert "staging.pN" in metrics["mismatched_fields"]
+
+
+def test_boolean_does_not_equal_numeric_zero() -> None:
+    truth = ground_truth_from_case(load_cases()[0], "A")
+    assert truth["mitotic_rate_per_mm2"] == 0.0
+    prediction = copy.deepcopy(truth)
+    prediction["mitotic_rate_per_mm2"] = False
+    metrics = compare_prediction(truth, prediction)
+    assert "mitotic_rate_per_mm2" in metrics["mismatched_fields"]
+
+
+def test_parser_rejects_duplicate_keys_and_non_finite_numbers() -> None:
+    parsed, duplicate = parse_and_validate('{"document_id":"A","document_id":"B"}')
+    assert parsed is None
+    assert "Duplicate JSON key" in duplicate["parse_error"]
+
+    parsed, non_finite = parse_and_validate('{"value": NaN}')
+    assert parsed is None
+    assert "Non-finite JSON number" in non_finite["parse_error"]
+
+
+def test_parser_does_not_strip_reasoning_envelopes() -> None:
+    raw = '<unused94>thought\nanalysis<unused95>{"document_id":"MEL-002-A"}'
+    parsed, metadata = parse_and_validate(raw)
+    assert parsed is None
+    assert metadata["parse_valid"] is False

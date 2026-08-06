@@ -1,0 +1,18 @@
+{
+  "breslow_qualifier": null,
+  "breslow_thickness_mm": null,
+  "diagnosis": "invasive melanoma, superficial spreading melanoma",
+  "document_id": "MEL-005-A",
+  "laterality": null,
+  "margins": {
+    "in_situ_deep": null,
+    "in_situ_peripheral": null,
+    "invasive_deep": "Not involved",
+    "invasive_peripheral": "Not involved"
+  },
+  "mitotic_qualifier": null,
+  "mitotic_rate_per_mm2": null,
+  "specimen_site": "midline central chest",
+  "staging": null,
+  "ulceration": null
+}

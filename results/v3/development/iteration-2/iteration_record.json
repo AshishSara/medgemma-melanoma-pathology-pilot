@@ -1,0 +1,26 @@
+{
+  "candidate_schema_sha256": "fe7e53a9dcd3a85f4cd7c42c64d204afc3dbf0bce2938167cd3ed2ba901723c3",
+  "canonical_schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "change_note": "Iteration 2 corrects development-observed OCR section labeling and delimiter handling, clarifies linked-field instructions, and prespecifies deterministic binding and normalization for document ID, site/laterality, and numeric measurement/qualifier pairs. No formal output, ground truth, corpus, model setting, or pass threshold was inspected or changed.",
+  "iteration": 2,
+  "manifest_sha256": "83a5d5a593ef4d7096105d1d5988f49e2ac483bdeb1b98619f2192922930cdb7",
+  "metrics_path": "results/v3/development/iteration-2/metrics.json",
+  "metrics_sha256": "083193aca157602b73cbe71177dba57e61d2f993c2b001fb79bd2032d72b4432",
+  "protocol_version": "evidence-gated-v3",
+  "run_record_sha256": {
+    "MEL-101-A:clean": "8ffddae3b5596789a3ebb316995dd78c38f48c98b549e502816839c27109ba4f",
+    "MEL-101-A:ocr_degraded": "bdf495d19fa6b86e89eec7b45eb3311d80be31cbc040a98f4f7182a8a39dcb3e",
+    "MEL-101-B:clean": "625c5c7e19d2c8e0b7f854d29ef47bcea58c38d48b96bc67a86569f561efec4e",
+    "MEL-101-B:ocr_degraded": "80c8f007f824a9c04e715f8d04c366bdabdb7b0c891b17853099ea3405f419df",
+    "MEL-102-A:clean": "bd8018c80f48a5f1e1e1593551d55e07b203b765c6b42bf4442cc92ec43b9f1b",
+    "MEL-102-A:ocr_degraded": "6cb5468c17c7384d13bddcda10060db16625d159b47c9c61e15d6648c224bde8",
+    "MEL-102-B:clean": "f080f7c57a3c812183d5523fef626b6352d74f1dfd968827ed55f4fec41f5722",
+    "MEL-102-B:ocr_degraded": "f7b40e1f9ffcaaaba66f0878c826a195b8ca96a3d8a5fcf6f6a052e48036b7fb",
+    "MEL-103-A:clean": "9593ea71bf0e45dfa6e50aa5e9c335ebab35267763ad4aecd1cf7791f0c320a2",
+    "MEL-103-A:ocr_degraded": "efd79c49853de4cd0cb67e22aaf069e1124bf21f55104d001078fddf398efecd",
+    "MEL-103-B:clean": "f94adb9bdd17c39e5f6d92627122cc7df7fa1ea6bd5f7936d43645c8629fbe90",
+    "MEL-103-B:ocr_degraded": "8a346356210690527c8bd11e502da4b7e6201e8e08d6b35e30a2596c9c9e8c0d"
+  },
+  "selection_rule": "Freeze only if final development exact match is at least 90%, each condition is at least 85%, unsupported rate is at most 2%, schema and evidence gates are 100%, and history carryover is zero; otherwise abandon v3 after the second iteration.",
+  "status": "DEVELOPMENT_ONLY"
+}

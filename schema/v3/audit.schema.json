@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/medgemma-melanoma-pilot/v3/audit.schema.json",
+  "title": "MedGemma v3 blind presence and abstention audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_id",
+    "specimen_site",
+    "laterality",
+    "diagnosis",
+    "breslow_thickness_mm",
+    "breslow_qualifier",
+    "ulceration",
+    "mitotic_rate_per_mm2",
+    "mitotic_qualifier",
+    "margins",
+    "staging"
+  ],
+  "properties": {
+    "document_id": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "specimen_site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "laterality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "breslow_thickness_mm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "breslow_qualifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "ulceration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "mitotic_rate_per_mm2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "mitotic_qualifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_line_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "absent",
+            "unclear"
+          ]
+        },
+        "evidence_line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^L[0-9]{3}$"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "margins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "invasive_peripheral",
+        "invasive_deep",
+        "in_situ_peripheral",
+        "in_situ_deep"
+      ],
+      "properties": {
+        "invasive_peripheral": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "invasive_deep": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "in_situ_peripheral": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "in_situ_deep": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        }
+      }
+    },
+    "staging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pT",
+        "pN",
+        "pM",
+        "stage_group"
+      ],
+      "properties": {
+        "pT": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "pN": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "pM": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        },
+        "stage_group": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evidence_line_ids"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "present",
+                "absent",
+                "unclear"
+              ]
+            },
+            "evidence_line_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^L[0-9]{3}$"
+              },
+              "maxItems": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

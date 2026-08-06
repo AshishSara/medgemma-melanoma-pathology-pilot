@@ -1,0 +1,11 @@
+{
+  "condition": "clean",
+  "document_id": "MEL-101-A",
+  "failure_reason": "compiled result did not satisfy unchanged canonical schema",
+  "failure_type": "V3CompilationError",
+  "ground_truth_used_during_inference": false,
+  "preserved_candidate_and_audit": true,
+  "source_commit": "b04d8396c7fe18640636ddda8bdafac150d5eb66",
+  "status": "failed_development_smoke",
+  "timestamp_utc": "2026-08-04T21:47:57.606520+00:00"
+}

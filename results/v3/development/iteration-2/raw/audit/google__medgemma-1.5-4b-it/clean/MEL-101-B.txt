@@ -1,0 +1,135 @@
+{
+  "document_id": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L004"
+      ]
+    },
+    "specimen_site": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L006"
+      ]
+    },
+    "laterality": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L006"
+      ]
+    },
+    "breslow_thickness_mm": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L009"
+      ]
+    },
+    "ulceration": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L010"
+      ]
+    },
+    "mitotic_rate_per_mm2": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L011"
+      ]
+    },
+    "margins": 
+    {
+      "in_situ_peripheral": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L012"
+        ]
+      },
+      "in_situ_deep": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L013"
+        ]
+      }
+    
+    
+,
+    "invasive_peripheral": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L012"
+      ]
+    },
+    "invasive_deep": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L012"
+      ]
+    }
+    
+}
+    
+    
+,
+    "mitotic_qualifier": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L011"
+      ]
+    },
+    "breslow_qualifier": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L009"
+      ]
+    },
+    "diagnosis": 
+    {
+      "status": "present",
+      "evidence_line_ids": [
+        "L007"
+      ]
+    },
+    "staging": 
+    {
+      "pT": 
+      {
+        "status": "present",
+        "evidence_line_ids": [
+          "L014"
+        ]
+      }
+    
+    
+,
+    "pM": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "pN": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    },
+    "stage_group": 
+    {
+      "status": "absent",
+      "evidence_line_ids": []
+    }
+}
+    
+    
+}
+    
+    

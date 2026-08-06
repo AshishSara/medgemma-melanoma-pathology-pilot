@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/medgemma-melanoma-pilot/v3/candidate.schema.json",
+  "title": "MedGemma v3 constrained extraction candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_id",
+    "specimen_site",
+    "laterality",
+    "diagnosis",
+    "breslow_thickness_mm",
+    "breslow_qualifier",
+    "ulceration",
+    "mitotic_rate_per_mm2",
+    "mitotic_qualifier",
+    "margins",
+    "staging"
+  ],
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "pattern": "^MEL-[0-9]{3}-[AB]$"
+    },
+    "specimen_site": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "laterality": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "left",
+            "right",
+            "midline"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "diagnosis": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "invasive_melanoma",
+            "melanoma_in_situ",
+            "residual_melanoma_in_situ_no_invasive"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "breslow_thickness_mm": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "breslow_qualifier": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "exact",
+            "at_least",
+            "approximate"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ulceration": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "present",
+            "not_identified",
+            "cannot_be_assessed"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mitotic_rate_per_mm2": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "mitotic_qualifier": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "exact",
+            "at_least"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "margins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "invasive_peripheral",
+        "invasive_deep",
+        "in_situ_peripheral",
+        "in_situ_deep"
+      ],
+      "properties": {
+        "invasive_peripheral": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "involved",
+                "not_involved",
+                "cannot_be_assessed"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "invasive_deep": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "involved",
+                "not_involved",
+                "cannot_be_assessed"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "in_situ_peripheral": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "involved",
+                "not_involved",
+                "cannot_be_assessed"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "in_situ_deep": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "involved",
+                "not_involved",
+                "cannot_be_assessed"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "staging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pT",
+        "pN",
+        "pM",
+        "stage_group"
+      ],
+      "properties": {
+        "pT": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pN": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pM": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stage_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

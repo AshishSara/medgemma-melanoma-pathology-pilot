@@ -1,0 +1,64 @@
+{
+  "assistant_prefix": "{",
+  "assistant_prefix_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
+  "backend": "transformers",
+  "condition": "clean",
+  "device": "cuda:0",
+  "do_sample": false,
+  "document_id": "MEL-005-A",
+  "dtype": "torch.bfloat16",
+  "elapsed_seconds": 20.060777802000302,
+  "generated_continuation_bytes": 497,
+  "generated_continuation_path": "results/generated_continuations/google__medgemma-1.5-4b-it/clean/MEL-005-A.txt",
+  "generated_continuation_sha256": "8f8b40294b6e5b2cd7c62955d7d4ddd03a511e40c79cfa0f5483a9d396a9cf9a",
+  "image_path": "output/rendered/clean/MEL-005-A.png",
+  "image_sha256": "a2da3651eb4030e0310ac8394485b3e62c30be7c9a325c00b85c9f98e2234b65",
+  "max_new_tokens": 1200,
+  "model_id": "google/medgemma-1.5-4b-it",
+  "normalized_output_path": "results/normalized/google__medgemma-1.5-4b-it/clean/MEL-005-A.json",
+  "outer_fence_removed": false,
+  "parse_error": null,
+  "parse_valid": true,
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "prompt_sha256": "139bc7f1dc858af0a5a2643f38b396f71c40e39e1419c14a281dd78f03ee801b",
+  "protocol_version": "heldout-pilot-v2",
+  "python_version": "3.12.13",
+  "raw_output_bytes": 498,
+  "raw_output_path": "results/raw/google__medgemma-1.5-4b-it/clean/MEL-005-A.txt",
+  "raw_output_sha256": "a23525ea0eb19d9b199cad90f4db63750c33d28468142a0a1515edb690d7c60d",
+  "repository_commit": "32f1453e2acbc79dbe50c7f80d9f42a519fdba8f",
+  "requested_dtype": "bfloat16",
+  "requested_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "resolved_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "response_mode": "json-prefill",
+  "run_timestamp_utc": "2026-08-04T18:08:17.866326+00:00",
+  "schema_errors": [
+    {
+      "message": "'invasive melanoma, superficial spreading melanoma' is not one of ['invasive_melanoma', 'melanoma_in_situ', 'residual_melanoma_in_situ_no_invasive', None]",
+      "path": "diagnosis"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.invasive_deep"
+    },
+    {
+      "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]",
+      "path": "margins.invasive_peripheral"
+    },
+    {
+      "message": "None is not of type 'object'",
+      "path": "staging"
+    },
+    {
+      "message": "'not identified' is not one of ['present', 'not_identified', 'cannot_be_assessed', None]",
+      "path": "ulceration"
+    }
+  ],
+  "schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "schema_valid": false,
+  "scope": "formal",
+  "semantic_case_id": "MEL-005",
+  "template_id": "A",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "4.57.6"
+}

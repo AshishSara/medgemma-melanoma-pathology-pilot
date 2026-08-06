@@ -19,9 +19,14 @@ dependencies = [
 dev = ["pytest>=8.3,<9", "ruff>=0.9,<1"]
 inference = [
   "accelerate>=1.2,<2",
+  "lm-format-enforcer>=0.11.3,<0.12",
+  "pytesseract>=0.3.13,<0.4",
   "torch>=2.5,<3",
-  "transformers>=4.50,<5",
+  "transformers>=4.57.6,<5",
 ]
+
+[tool.setuptools]
+packages = []
 
 [tool.pytest.ini_options]
 addopts = "-q"

@@ -1,0 +1,8 @@
+{
+  "classification": "development/prompt-selection; excluded from formal evaluation",
+  "repository_commit": "fe97c9c2987df9e3b23cee8bfa7dba9a17d68bc3",
+  "model_id": "google/medgemma-1.5-4b-it",
+  "model_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "development_case_id": "MEL-001",
+  "formal_exclusion": "A and B, clean and OCR-degraded, for both models"
+}

@@ -1,0 +1,10 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-102-A
+Procedure: Punch biopsy
+Specimen site: Left palm
+Diagnosis: Melanoma in situ, acral lentiginous type
+Melanoma in situ - peripheral margin: Involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pTis
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No dermal invasive melanoma is identified.

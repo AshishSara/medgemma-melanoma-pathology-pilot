@@ -1,0 +1,23 @@
+
+  "document_id": "MEL-006-A",
+  "specimen_site": "left thigh",
+  "laterality": "left",
+  "diagnosis": "Invasive melanoma, superficial spreading melanoma",
+  "breslow_thickness_mm": 1.0,
+  "breslow_qualifier": "mm",
+  "ulceration": "not_identified",
+  "mitotic_rate_per_mm2": 2,
+  "mitotic_qualifier": "per mm2",
+  "margins": {
+    "invasive_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "in_situ_peripheral": "not_involved",
+    "in_situ_deep": "not_involved"
+  },
+  "staging": {
+    "pT": "pt1b",
+    "pN": "pno",
+    "pM": null,
+    "stage_group": "Stage IA"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "document_id": "MEL-001-B",
+  "model_id": "google/medgemma-1.5-4b-it",
+  "revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "dtype": "torch.bfloat16",
+  "do_sample": false,
+  "max_new_tokens": 1200,
+  "assistant_json_prefill": true,
+  "prompt_sha256": "4919ce31a48555e9898975b98bf7d2bfedee2bc934cf84df712a7e9e2f07be7f",
+  "elapsed_seconds": 20.39184869499968,
+  "parse": {
+    "outer_fence_removed": false,
+    "parse_valid": true,
+    "schema_valid": false,
+    "parse_error": null,
+    "schema_errors": [
+      {
+        "path": "breslow_qualifier",
+        "message": "None is not of type 'string'"
+      },
+      {
+        "path": "margins.in_situ_deep",
+        "message": "'melanoma in situ deep margin: not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "margins.in_situ_peripheral",
+        "message": "'melanoma in situ peripheral margin: not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "margins.invasive_deep",
+        "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "margins.invasive_peripheral",
+        "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "staging",
+        "message": "None is not of type 'object'"
+      },
+      {
+        "path": "ulceration",
+        "message": "'not identified' is not one of ['present', 'not_identified', 'cannot_be_assessed', None]"
+      }
+    ]
+  },
+  "score": {
+    "field_exact_correct": 6,
+    "field_exact_total": 16,
+    "field_exact_match": 0.375,
+    "true_positive": 3,
+    "false_positive": 6,
+    "false_negative": 10,
+    "precision": 0.3333333333333333,
+    "recall": 0.23076923076923078,
+    "f1": 0.27272727272727276,
+    "unsupported_count": 0,
+    "unsupported_opportunities": 3,
+    "unsupported_field_rate": 0.0,
+    "document_id_correct": true,
+    "complete_report": false,
+    "mismatched_fields": [
+      "specimen_site",
+      "breslow_qualifier",
+      "ulceration",
+      "mitotic_rate_per_mm2",
+      "mitotic_qualifier",
+      "margins.invasive_peripheral",
+      "margins.invasive_deep",
+      "margins.in_situ_peripheral",
+      "margins.in_situ_deep",
+      "staging.pT"
+    ],
+    "unsupported_fields": []
+  }
+}

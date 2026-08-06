@@ -1,0 +1,160 @@
+{
+  "accelerate_version": "1.14.0",
+  "artifacts": {
+    "audit_parsed": {
+      "bytes": 1702,
+      "path": "results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.json",
+      "sha256": "ce04af2ecac3ef4193f96dcbf4e22f3f5a0c8405480a40692e5195403c0b8f61"
+    },
+    "audit_prompt": {
+      "bytes": 3418,
+      "path": "results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-104-A.txt",
+      "sha256": "e708db06929f9a55aec6f3ca45e4ae5530d7607b52571de6952b9b83ae5ae977"
+    },
+    "audit_raw": {
+      "bytes": 1711,
+      "path": "results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.txt",
+      "sha256": "0f98b14529e0b9e848fea42056dcb4e383c38710991188c6da77bc9f1c4d5111"
+    },
+    "candidate_parsed": {
+      "bytes": 551,
+      "path": "results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.json",
+      "sha256": "4f13b9cfa87772caa8312dc57e37dc27e20399f0294d5bd1f5df7fd93b0f5ab7"
+    },
+    "candidate_prompt": {
+      "bytes": 3697,
+      "path": "results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-104-A.txt",
+      "sha256": "b70fb0b2f7f16cc7d1559d48bba0df18300c839f554658ce4661cf5f34551b68"
+    },
+    "candidate_raw": {
+      "bytes": 589,
+      "path": "results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.txt",
+      "sha256": "3c306bc2d7d90bdc56d5d132630dd94c98e7aa571ac13b6ea32ec8bb0e938ffb"
+    },
+    "compiler_audit": {
+      "bytes": 7968,
+      "path": "results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.json",
+      "sha256": "59bba69776b169db7fc25fafd763ccb861f4d99219f4ef919f28f2068e03a936"
+    },
+    "normalized": {
+      "bytes": 554,
+      "path": "results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-A.json",
+      "sha256": "62b01cc39b47f070de6b54bf26e4fa10fd872050ef0b8a0b992317d4b73b5b56"
+    },
+    "ocr": {
+      "bytes": 21392,
+      "path": "results/v3/formal/ocr/ocr_degraded/MEL-104-A.json",
+      "sha256": "2af1533babb754c8c5f46beb7e36dc09858d2e1821319b9b3acede45a0801c1e"
+    }
+  },
+  "assistant_prefill": false,
+  "attempt_status": "completed",
+  "audit_elapsed_seconds": 64.27536008700008,
+  "audit_is_blind": true,
+  "audit_max_new_tokens": 768,
+  "audit_prompt_constructed_before_candidate_generation": true,
+  "audit_prompt_template_path": "prompts/v3/audit_prompt.txt",
+  "audit_prompt_template_sha256": "ec6ced26fd19398c6f85b1f2f3367f3b6a74e49fd9bb1ce16ea026d6b37d9eb5",
+  "audit_rendered_prompt": {
+    "bytes": 3418,
+    "sha256": "e708db06929f9a55aec6f3ca45e4ae5530d7607b52571de6952b9b83ae5ae977"
+  },
+  "audit_schema_path": "schema/v3/audit.schema.json",
+  "audit_schema_sha256": "08d8e08fb892f7684d601939b669f845e17847bd9ac75c18c2fad646936cd28e",
+  "backend": "transformers-direct",
+  "candidate_elapsed_seconds": 28.283266575999733,
+  "candidate_max_new_tokens": 512,
+  "candidate_prompt_template_path": "prompts/v3/candidate_prompt.txt",
+  "candidate_prompt_template_sha256": "4101fa7eb2ca560a83bdf8166a316432e5045bf1dcb0ee4177deea283e5d8c4b",
+  "candidate_rendered_prompt": {
+    "bytes": 3697,
+    "sha256": "b70fb0b2f7f16cc7d1559d48bba0df18300c839f554658ce4661cf5f34551b68"
+  },
+  "candidate_schema_path": "schema/v3/candidate.schema.json",
+  "candidate_schema_sha256": "fe7e53a9dcd3a85f4cd7c42c64d204afc3dbf0bce2938167cd3ed2ba901723c3",
+  "canonical_schema_path": "schema/extraction.schema.json",
+  "canonical_schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "compiler_path": "scripts/v3_pipeline.py",
+  "compiler_sha256": "1bb6b7c30c77d868800a511b58614f406ce8ad16bb007ff2fd7b915e9dc79dd5",
+  "compiler_summary": {
+    "accepted_non_null_count": 13,
+    "compiler_version": "v3-evidence-compiler-2",
+    "history_evidence_rejection_count": 0,
+    "rejected_non_null_count": 1,
+    "schema_valid": true
+  },
+  "condition": "ocr_degraded",
+  "cuda_device_name": "Tesla T4",
+  "cuda_version": "12.8",
+  "dataset_version": "pilot-v3",
+  "development_iteration": null,
+  "device": "cuda:0",
+  "do_sample": false,
+  "document_id": "MEL-104-A",
+  "dtype": "torch.bfloat16",
+  "execution_attempt_id": "20260804T225110.888169Z-pid27638",
+  "generator_version": "3.0.0",
+  "image_path": "output/v3/rendered/ocr_degraded/MEL-104-A.png",
+  "image_sha256": "e75ca0796ad6691b524a922248610ddfc5fe1e537206368b6b72a5dd825581c9",
+  "inference_script_path": "scripts/run_v3_inference.py",
+  "inference_script_sha256": "6219d429b670f7dacf7d61db11ac2ac0997142bd30a03a94ec380bb689f0745f",
+  "lm_format_enforcer_version": "0.11.3",
+  "manifest_path": "data/v3/report_manifest.csv",
+  "manifest_row_without_ground_truth": {
+    "blur_radius": "0.674",
+    "condition": "ocr_degraded",
+    "contrast_factor": "0.861",
+    "dataset_version": "pilot-v3",
+    "document_id": "MEL-104-A",
+    "dpi": "160",
+    "generator_version": "3.0.0",
+    "image_path": "output/v3/rendered/ocr_degraded/MEL-104-A.png",
+    "image_sha256": "e75ca0796ad6691b524a922248610ddfc5fe1e537206368b6b72a5dd825581c9",
+    "jpeg_quality": "69",
+    "pdf_path": "output/v3/pdf/ocr_degraded/MEL-104-A.pdf",
+    "pdf_sha256": "8970d1ef8d1d864542a317ce49d81f5029d427fe0f645c3cc8adc46675a6ffdd",
+    "perturbation_id": "scan-v3",
+    "renderer": "pypdfium2-5.12.1",
+    "rotation_degrees": "0.644",
+    "semantic_case_id": "MEL-104",
+    "source_row_sha256": "7ef78544e25eb7fb7b648a8b27929a46ebdc639e41574969b9dbdb98ea64c20e",
+    "source_text_path": "data/v3/source_text/MEL-104-A.txt",
+    "split": "formal",
+    "template_id": "A"
+  },
+  "manifest_sha256": "83a5d5a593ef4d7096105d1d5988f49e2ac483bdeb1b98619f2192922930cdb7",
+  "model_id": "google/medgemma-1.5-4b-it",
+  "num_beams": 1,
+  "ocr": {
+    "config": "--oem 1 --psm 6",
+    "elapsed_seconds": 2.3562122029998136,
+    "engine": "tesseract",
+    "image_preprocessing": "none",
+    "language": "eng",
+    "line_count": 19,
+    "line_grouping": "ordered page_num/block_num/par_num/line_num word groups",
+    "line_id_assignment": "L001..Lnnn in first-seen grouped OCR order",
+    "output_type": "pytesseract.Output.DICT",
+    "pytesseract_version": "0.3.13",
+    "tesseract_version": "4.1.1",
+    "timeout_seconds": 120
+  },
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "protocol_lock_path": "data/v3/protocol_lock.json",
+  "protocol_lock_sha256": "40c99841bfcc23b5daa33973ac649c57a299c21c79ce46a7bd9ed11eac54036f",
+  "protocol_source_commit": "6097cd633229dcf4d41c7f18fbea4d13d2bf17ee",
+  "protocol_version": "evidence-gated-v3",
+  "python_version": "3.12.13",
+  "random_seed": 0,
+  "repository_commit": "afb1f84b022b3da01db2fc6f9d3686ea364db202",
+  "requested_dtype": "bfloat16",
+  "requested_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "resolved_revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "run_timestamp_utc": "2026-08-04T22:55:12.100799+00:00",
+  "semantic_case_id": "MEL-104",
+  "split": "formal",
+  "template_id": "A",
+  "text_vocab_size": 262208,
+  "torch_version": "2.11.0+cu128",
+  "transformers_version": "4.57.6"
+}

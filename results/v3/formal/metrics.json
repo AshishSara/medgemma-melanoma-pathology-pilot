@@ -1,0 +1,300 @@
+{
+  "artifact_issues": [
+    {
+      "condition": "clean",
+      "document_id": "MEL-104-A",
+      "errors": [
+        "execution ledger: execution ledger has 3 bound records; expected 20",
+        "execution ledger: formal execution ledger must contain exactly one completed terminal attempt"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-104-B",
+      "errors": [
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-B.txt",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-104-B.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-105-A",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-105-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-105-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-105-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-105-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-105-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-105-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-105-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-105-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-105-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-105-A.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-105-A",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-105-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-105-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-105-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-A.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-105-B",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-105-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-105-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-105-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-105-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-105-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-105-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-105-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-105-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-105-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-105-B.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-105-B",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-105-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-105-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-105-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-105-B.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-106-A",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-106-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-106-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-106-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-106-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-106-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-106-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-106-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-106-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-106-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-106-A.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-106-A",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-106-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-106-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-106-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-A.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-106-B",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-106-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-106-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-106-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-106-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-106-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-106-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-106-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-106-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-106-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-106-B.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-106-B",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-106-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-106-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-106-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-106-B.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-107-A",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-107-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-107-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-107-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-107-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-107-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-107-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-107-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-107-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-107-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-107-A.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-107-A",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-107-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-107-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-107-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-A.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-107-B",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-107-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-107-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-107-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-107-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-107-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-107-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-107-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-107-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-107-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-107-B.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-107-B",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-107-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-107-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-107-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-107-B.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-108-A",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-108-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-108-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-108-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-108-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-108-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-108-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-108-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-108-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-108-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-108-A.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-108-A",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-108-A.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-108-A.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-108-A.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-A.json"
+      ]
+    },
+    {
+      "condition": "clean",
+      "document_id": "MEL-108-B",
+      "errors": [
+        "missing results/v3/formal/ocr/clean/MEL-108-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/clean/MEL-108-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/clean/MEL-108-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/clean/MEL-108-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/clean/MEL-108-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/clean/MEL-108-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/clean/MEL-108-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/clean/MEL-108-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/clean/MEL-108-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/clean/MEL-108-B.json"
+      ]
+    },
+    {
+      "condition": "ocr_degraded",
+      "document_id": "MEL-108-B",
+      "errors": [
+        "missing results/v3/formal/ocr/ocr_degraded/MEL-108-B.json",
+        "missing results/v3/formal/rendered_prompts/candidate/ocr_degraded/MEL-108-B.txt",
+        "missing results/v3/formal/rendered_prompts/audit/ocr_degraded/MEL-108-B.txt",
+        "missing results/v3/formal/raw/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.txt",
+        "missing results/v3/formal/raw/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.txt",
+        "missing results/v3/formal/parsed/candidate/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.json",
+        "missing results/v3/formal/parsed/audit/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.json",
+        "missing results/v3/formal/normalized/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.json",
+        "missing results/v3/formal/compiler_audits/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.json",
+        "missing results/v3/formal/run_records/google__medgemma-1.5-4b-it/ocr_degraded/MEL-108-B.json"
+      ]
+    }
+  ],
+  "generated_at_utc": "2026-08-04T23:00:46.472543+00:00",
+  "ground_truth_read": false,
+  "intended_output_count": 20,
+  "pass": false,
+  "pass_criteria": {
+    "each_condition_exact_at_least_85_percent": false,
+    "evidence_acceptance_100_percent": false,
+    "pooled_exact_at_least_90_percent": false,
+    "provenance_20_of_20": false,
+    "schema_100_percent": false,
+    "unsupported_at_most_2_percent": false,
+    "zero_history_carryover": false
+  },
+  "protocol_version": "evidence-gated-v3",
+  "provenance": {
+    "required_count": 20,
+    "valid_count": 2,
+    "valid_rate": 0.1
+  },
+  "provenance_valid_count": 2,
+  "status": "INCOMPLETE"
+}

@@ -1,0 +1,52 @@
+{
+  "document_id": "MEL-102-B",
+  "specimen_site": "left palm",
+  "laterality": "left",
+  "diagnosis": "melanoma_in_situ",
+  "breslow_thickness_mm": null,
+  "breslow_qualifier": null,
+  "ulceration": null,
+  "mitotic_rate_per_mm2": null,
+  "mitotic_qualifier": null,
+  "margins": {
+    "in_situ_peripheral": "involved",
+    "in_situ_deep": "not_involved"
+  
+  
+  
+  ,
+  "invasive_peripheral": "not_involved",
+  "invasive_deep": "not_involved"
+  
+  
+  
+  }
+  
+  
+  
+  ,
+  "staging": {
+    "pT": "pTis"
+  
+  
+  
+  ,
+  "pN": null,
+  "pM": null
+  
+  
+  
+  ,
+  "stage_group": null
+  
+  
+  
+  }
+  
+  
+  
+  }
+  
+  
+  
+  

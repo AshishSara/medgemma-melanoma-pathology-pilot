@@ -1,0 +1,18 @@
+{
+  "breslow_qualifier": null,
+  "breslow_thickness_mm": 0.3,
+  "diagnosis": "invasive melanoma",
+  "document_id": "MEL-005-B",
+  "laterality": "midline",
+  "margins": {
+    "in_situ_deep": null,
+    "in_situ_peripheral": null,
+    "invasive_deep": "not involved",
+    "invasive_peripheral": "not involved"
+  },
+  "mitotic_qualifier": null,
+  "mitotic_rate_per_mm2": null,
+  "specimen_site": "midline central chest",
+  "staging": null,
+  "ulceration": "not identified"
+}

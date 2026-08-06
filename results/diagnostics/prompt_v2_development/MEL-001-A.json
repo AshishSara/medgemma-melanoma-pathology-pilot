@@ -1,0 +1,70 @@
+{
+  "document_id": "MEL-001-A",
+  "model_id": "google/medgemma-1.5-4b-it",
+  "revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+  "dtype": "torch.bfloat16",
+  "do_sample": false,
+  "max_new_tokens": 1200,
+  "assistant_json_prefill": true,
+  "prompt_sha256": "139bc7f1dc858af0a5a2643f38b396f71c40e39e1419c14a281dd78f03ee801b",
+  "elapsed_seconds": 22.214893858999858,
+  "parse": {
+    "outer_fence_removed": false,
+    "parse_valid": true,
+    "schema_valid": false,
+    "parse_error": null,
+    "schema_errors": [
+      {
+        "path": "diagnosis",
+        "message": "'invasive melanoma, superficial spreading melanoma' is not one of ['invasive_melanoma', 'melanoma_in_situ', 'residual_melanoma_in_situ_no_invasive', None]"
+      },
+      {
+        "path": "margins.in_situ_deep",
+        "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "margins.invasive_deep",
+        "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "margins.invasive_peripheral",
+        "message": "'not involved' is not one of ['involved', 'not_involved', 'cannot_be_assessed', None]"
+      },
+      {
+        "path": "mitotic_qualifier",
+        "message": "None is not of type 'string'"
+      },
+      {
+        "path": "ulceration",
+        "message": "'not identified' is not one of ['present', 'not_identified', 'cannot_be_assessed', None]"
+      }
+    ]
+  },
+  "score": {
+    "field_exact_correct": 8,
+    "field_exact_total": 16,
+    "field_exact_match": 0.5,
+    "true_positive": 5,
+    "false_positive": 7,
+    "false_negative": 8,
+    "precision": 0.4166666666666667,
+    "recall": 0.38461538461538464,
+    "f1": 0.4,
+    "unsupported_count": 0,
+    "unsupported_opportunities": 3,
+    "unsupported_field_rate": 0.0,
+    "document_id_correct": true,
+    "complete_report": false,
+    "mismatched_fields": [
+      "specimen_site",
+      "diagnosis",
+      "breslow_qualifier",
+      "ulceration",
+      "mitotic_qualifier",
+      "margins.invasive_peripheral",
+      "margins.invasive_deep",
+      "margins.in_situ_deep"
+    ],
+    "unsupported_fields": []
+  }
+}

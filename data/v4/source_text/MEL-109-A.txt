@@ -1,0 +1,15 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-109-A
+Procedure: Saucerization biopsy
+Specimen site: Right posterior upper arm
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: Approximately 1.2 mm
+Ulceration: Not identified
+Mitotic rate: 2 per mm2
+Invasive melanoma - peripheral margin: Involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Cannot be assessed
+Reported pT: pT2a
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+Tissue orientation precludes assessment of the in-situ deep edge.

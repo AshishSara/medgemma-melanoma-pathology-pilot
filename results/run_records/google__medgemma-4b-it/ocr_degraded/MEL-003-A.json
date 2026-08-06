@@ -1,0 +1,52 @@
+{
+  "assistant_prefix": "{",
+  "assistant_prefix_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
+  "backend": "transformers",
+  "condition": "ocr_degraded",
+  "device": "cuda:0",
+  "do_sample": false,
+  "document_id": "MEL-003-A",
+  "dtype": "torch.bfloat16",
+  "elapsed_seconds": 25.77687918400079,
+  "generated_continuation_bytes": 603,
+  "generated_continuation_path": "results/generated_continuations/google__medgemma-4b-it/ocr_degraded/MEL-003-A.txt",
+  "generated_continuation_sha256": "4663dd0e99520f0fd682d5cb5fce7fbe2ade392b2e2a6f982a693b83c0fdf068",
+  "image_path": "output/rendered/ocr_degraded/MEL-003-A.png",
+  "image_sha256": "3dd733b2fc34cf53c41459d7c35ff137c638b927fc72378369b35987e3da6b3a",
+  "max_new_tokens": 1200,
+  "model_id": "google/medgemma-4b-it",
+  "normalized_output_path": "results/normalized/google__medgemma-4b-it/ocr_degraded/MEL-003-A.json",
+  "outer_fence_removed": false,
+  "parse_error": null,
+  "parse_valid": true,
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "prompt_sha256": "139bc7f1dc858af0a5a2643f38b396f71c40e39e1419c14a281dd78f03ee801b",
+  "protocol_version": "heldout-pilot-v2",
+  "python_version": "3.12.13",
+  "raw_output_bytes": 604,
+  "raw_output_path": "results/raw/google__medgemma-4b-it/ocr_degraded/MEL-003-A.txt",
+  "raw_output_sha256": "8f9270b182ae42d9456b7f3e3c3d46f619298c74117a0032a0c5643a622b04ef",
+  "repository_commit": "32f1453e2acbc79dbe50c7f80d9f42a519fdba8f",
+  "requested_dtype": "bfloat16",
+  "requested_revision": "290cda5eeccbee130f987c4ad74a59ae6f196408",
+  "resolved_revision": "290cda5eeccbee130f987c4ad74a59ae6f196408",
+  "response_mode": "json-prefill",
+  "run_timestamp_utc": "2026-08-04T18:22:21.964609+00:00",
+  "schema_errors": [
+    {
+      "message": "'rmm2' is not one of ['exact', 'at_least', 'approximate', None]",
+      "path": "breslow_qualifier"
+    },
+    {
+      "message": "'invasive melanoma, superficial spreading melanoma' is not one of ['invasive_melanoma', 'melanoma_in_situ', 'residual_melanoma_in_situ_no_invasive', None]",
+      "path": "diagnosis"
+    }
+  ],
+  "schema_sha256": "c06982e97db88758cb8cbf10c7006d3bc76d0599cd4ffb6334cec0b76c180d72",
+  "schema_valid": false,
+  "scope": "formal",
+  "semantic_case_id": "MEL-003",
+  "template_id": "A",
+  "torch_version": "2.13.0+cu130",
+  "transformers_version": "4.57.6"
+}

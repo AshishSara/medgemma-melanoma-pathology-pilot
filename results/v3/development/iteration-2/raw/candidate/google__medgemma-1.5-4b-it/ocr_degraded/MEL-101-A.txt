@@ -1,0 +1,37 @@
+{
+  "document_id": "MEL-101-A",
+  "specimen_site": "lower leg",
+  "laterality": "right",
+  "diagnosis": "invasive_melanoma",
+  "breslow_thickness_mm": 0.9,
+  "breslow_qualifier": null,
+  "ulceration": "not_identified",
+  "mitotic_rate_per_mm2": 1,
+  "mitotic_qualifier": null,
+  "margins": {
+    "invasive_peripheral": "not_involved",
+    "invasive_deep": "not_involved",
+    "in_situ_peripheral": "not_involved",
+    "in_situ_deep": "not_involved"
+  },
+  "staging": {
+    "pT": "pTib"
+  
+  
+  
+  ,
+  "pM": null,
+  "pN": null
+  
+  
+  
+  ,
+  "stage_group": null
+  
+  
+  
+  }
+}
+    
+    
+ 

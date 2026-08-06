@@ -1,0 +1,16 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files:  50%|█████     | 1/2 [04:23<04:23, 263.88s/it]
+Fetching 2 files: 100%|██████████| 2/2 [04:25<00:00, 132.60s/it]
+Fetching 2 files: 100%|██████████| 2/2 [04:25<00:00, 132.60s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:18<00:18, 18.10s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:32<00:00, 15.89s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:32<00:00, 16.22s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Device set to use cuda:0
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+WROTE MEL-001-A clean (107.1s)
+Completed 1 new inference calls.

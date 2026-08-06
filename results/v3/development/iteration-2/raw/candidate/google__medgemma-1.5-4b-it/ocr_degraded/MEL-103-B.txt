@@ -1,0 +1,32 @@
+{
+  "document_id": "MEL-103-B",
+  "specimen_site": "flank",
+  "laterality": "right",
+  "diagnosis": "residual_melanoma_in_situ_no_invasive",
+  "breslow_thickness_mm": null,
+  "breslow_qualifier": null,
+  "ulceration": null,
+  "mitotic_rate_per_mm2": null,
+  "mitotic_qualifier": null,
+  "margins": {
+    "in_situ_peripheral": "not_involved",
+    "in_situ_deep": "not_involved"
+  
+  
+  
+  ,
+  "invasive_peripheral": null,
+  "invasive_deep": null
+}
+    
+    
+ ,"staging": {
+    "pT": "pT2a",
+    "pN": null,
+    "pM": null,
+    "stage_group": null
+  }
+}
+    
+    
+ 
