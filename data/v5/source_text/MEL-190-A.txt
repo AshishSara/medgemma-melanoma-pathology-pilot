@@ -1,0 +1,15 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-190-A
+Procedure: Excision
+Specimen site: Right forearm
+Diagnosis: Invasive melanoma, superficial spreading melanoma
+Breslow thickness: 0.6 mm
+Ulceration: Not identified
+Mitotic rate: 1 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT1a
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No microsatellitosis is identified.

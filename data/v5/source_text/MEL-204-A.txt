@@ -1,0 +1,18 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-204-A
+Procedure: Wide local excision with sentinel nodes
+Specimen site: Midline upper back
+Diagnosis: Invasive melanoma, nodular melanoma
+Breslow thickness: 3.4 mm
+Ulceration: Present
+Mitotic rate: 6 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT3b
+Reported pN: pN0
+Reported pM: pM not assigned
+Reported stage group: Stage IIB
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+Two sentinel nodes are negative for melanoma (0 of 2).

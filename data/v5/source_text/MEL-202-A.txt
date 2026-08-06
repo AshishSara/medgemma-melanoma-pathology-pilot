@@ -1,0 +1,10 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-202-A
+Procedure: Shave biopsy
+Specimen site: Right abdomen
+Diagnosis: Melanoma in situ, superficial spreading type
+Melanoma in situ - peripheral margin: Involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pTis
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+No dermal invasive melanoma is identified.

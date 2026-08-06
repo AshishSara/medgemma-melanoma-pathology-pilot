@@ -1,0 +1,11 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-201-B
+Left scalp, Excision:
+Invasive melanoma, lentigo maligna melanoma.
+Breslow thickness is Approximately 1.1 mm.
+Ulceration: not identified.
+Mitotic rate is 2 per mm2.
+invasive melanoma peripheral margin: not involved; invasive melanoma deep margin: not involved; melanoma in situ peripheral margin: not involved; melanoma in situ deep margin: not involved.
+Reported pathologic classification - pT: pT2a.
+COMMENT
+Tumor-infiltrating lymphocytes are nonbrisk.

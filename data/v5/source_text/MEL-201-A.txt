@@ -1,0 +1,15 @@
+SYNTHETIC RESEARCH REPORT - NOT A REAL PATIENT
+Document ID: MEL-201-A
+Procedure: Excision
+Specimen site: Left scalp
+Diagnosis: Invasive melanoma, lentigo maligna melanoma
+Breslow thickness: Approximately 1.1 mm
+Ulceration: Not identified
+Mitotic rate: 2 per mm2
+Invasive melanoma - peripheral margin: Not involved
+Invasive melanoma - deep margin: Not involved
+Melanoma in situ - peripheral margin: Not involved
+Melanoma in situ - deep margin: Not involved
+Reported pT: pT2a
+ADDITIONAL CURRENT-SPECIMEN FINDINGS
+Tumor-infiltrating lymphocytes are nonbrisk.

@@ -1,0 +1,4 @@
+accelerate==1.14.0
+lm-format-enforcer==0.11.3
+pytesseract==0.3.13
+transformers==4.57.6

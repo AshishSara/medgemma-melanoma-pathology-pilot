@@ -1,0 +1,23 @@
+{
+  "breslow_qualifier": "at_least",
+  "breslow_thickness_mm": 1.8,
+  "diagnosis": "invasive_melanoma",
+  "document_id": "MEL-205-A",
+  "laterality": "right",
+  "margins": {
+    "in_situ_deep": null,
+    "in_situ_peripheral": null,
+    "invasive_deep": "involved",
+    "invasive_peripheral": "involved"
+  },
+  "mitotic_qualifier": "at_least",
+  "mitotic_rate_per_mm2": 1.0,
+  "specimen_site": "ear",
+  "staging": {
+    "pM": null,
+    "pN": null,
+    "pT": null,
+    "stage_group": null
+  },
+  "ulceration": "cannot_be_assessed"
+}
